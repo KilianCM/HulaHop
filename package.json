@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.2",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "vue-router": "^3.1.5"
+  }
+}

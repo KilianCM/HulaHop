@@ -13,7 +13,6 @@ class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
-     * @Route("/{route}", name="vue_pages", requirements={"route"="^(?!.*api).+"})
      * @Method("GET")
      */
     public function indexAction(Request $request) {

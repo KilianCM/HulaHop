@@ -11,12 +11,20 @@
 
 To launch the project for dev purpose, you have to launch these commands : 
 
+- Launch PHP server :
 ```
 composer i
-symfony server:run
+symfony serve
 ```
 
+- Launch yarn server (front) : 
 ```
 yarn
 yarn run encore dev --watch
 ```
+
+- (**only once**) Create database :
+```
+php bin/console doctrine:create:database
+php bin/console doctrine:migrations:migrate
+``` 

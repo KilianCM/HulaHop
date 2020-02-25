@@ -5,13 +5,46 @@
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+
+  a{
+    color: $white;
+    text-decoration: none;
+  }
+
+  .logged-user{
+    margin-top: 20px;
+    display: flex;
+    img{
+      width: 50px;
+      height: 50px;
+    }
+    .user-infos{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
+  .nav-menu{
+    margin-top: 20px;
+
+    .nav-item{
+      margin-bottom: 10px;
+    }
+  }
+
+  @include not-mobile{
+    min-height: 100vh;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
 
 
   @include mobile {
     width: 100vw;
     height: 50px;
     overflow: hidden;
+    align-items: center;
 
     &.burger-click{
       height: 100vh;

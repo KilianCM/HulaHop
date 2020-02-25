@@ -1,0 +1,30 @@
+form{
+  display: flex;
+  flex-direction: column;
+
+  input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  h2{
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+  label{
+    margin: 10px 0;
+  }
+  button{
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+  }
+
+  @include mobile{
+    min-width: 200px;
+  }
+  @include not-mobile{
+    min-width: 400px;
+  }
+}

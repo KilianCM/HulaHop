@@ -20,7 +20,7 @@ symfony serve
 - Launch yarn server (front) : 
 ```
 yarn
-yarn encore dev --watch
+yarn run encore dev --watch
 ```
 
 - (**only once**) Create database :

@@ -13,6 +13,10 @@
     height: 50px;
     overflow: hidden;
 
+    &.burger-click{
+      height: 100vh;
+    }
+
     .title {
       min-height: 100%;
       width: 100%;
@@ -20,9 +24,32 @@
       align-items: center;
       justify-content: space-between;
       padding: 0px 10px;
+      &.burger-click{
+        min-height: auto;
+      }
       h1 {
         text-align: left;
         padding: 0 10px;
+      }
+      .hamburger{
+        padding: 0 10px;
+      }
+    }
+    .nav-menu {
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .nav-item{
+        margin-bottom: 20px;
+      }
+
+      &.burger-click{
+        animation: fade-in-up 1s forwards;
       }
     }
 

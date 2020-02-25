@@ -7,7 +7,7 @@
         <h1>Liste des jeux disponibles</h1>
         <ul>
             {% for game in games %}
-                <li>{{ game.name }} - {{ game.category.name }}</li>
+                <li>{{ game.name }} - {{ game.category.name }} <a href="{{ path("borrow_game", { 'id' : game.id }) }}">Emprunter</a></li>
             {% else %}
                 <p>Pas de jeu disponible</p>
             {% endfor %}

@@ -1,0 +1,35 @@
+#menu {
+  padding: 20px;
+  box-shadow: $box-shadow;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logged-user {
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+    .user-infos {
+      p {
+        margin: 0 !important;
+        line-height: unset !important;
+      }
+    }
+  }
+
+  .nav-buttons {
+    margin-top: 40px;
+
+    .btn-container {
+      width: 100%;
+      .btn {
+        margin-bottom: unset !important;
+      }
+    }
+  }
+}

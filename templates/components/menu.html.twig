@@ -1,0 +1,27 @@
+<div id="menu" class="bg-dark text-light col-3">
+    <h1>HulaHop</h1>
+
+    {% if app.user %}
+    <div class="logged-user">
+        <img src="https://cdn1.iconfinder.com/data/icons/ice-cream-emoticon-sticker/64/ice_cream-21-512.png" alt="">
+        <div class="user-infos">
+            <p class="font-bold">{{ app.user.username }}</p>
+            <p>Joueur occasionnel</p>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="u-center nav-buttons">
+        <div class="btn-container">
+            <div class="btn btn-primary">Ma collection</div>
+        </div>
+        <div class="btn-container">
+            <div class="btn btn-primary">Trouver des joueurs</div>
+        </div>
+        <div class="btn-container">
+            <div class="btn btn-primary">Bonnes affaires</div>
+        </div>
+    </div>
+
+
+</div>

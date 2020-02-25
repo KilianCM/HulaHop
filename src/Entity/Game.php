@@ -39,7 +39,7 @@ class Game
     private $recommendedAge;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $partyTime;
 
@@ -52,6 +52,11 @@ class Game
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="games")
      */
     private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="games")
+     */
+    private $category;
 
     public function __construct()
     {
@@ -112,12 +117,12 @@ class Game
         return $this;
     }
 
-    public function getPartyTime(): ?\DateTimeInterface
+    public function getPartyTime(): ?int
     {
         return $this->partyTime;
     }
 
-    public function setPartyTime(?\DateTimeInterface $partyTime): self
+    public function setPartyTime(?int $partyTime): self
     {
         $this->partyTime = $partyTime;
 
@@ -179,6 +184,18 @@ class Game
             $this->users->removeElement($user);
             $user->removeGame($this);
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -27,4 +27,5 @@ yarn run encore dev --watch
 ```
 php bin/console doctrine:create:database
 php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load //To populate database with 20 games and 1 category
 ``` 

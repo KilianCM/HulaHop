@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes emprunts{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 class="title">Mes emprunts</h1>
+
+        {% for borrow in borrows %}
+            <div>
+               {{ borrow.game.name }}
+            </div>
+        {% else %}
+            <p>Vous n'avez jamais emprunté de jeu.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

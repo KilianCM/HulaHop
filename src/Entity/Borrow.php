@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\RatingRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BorrowRepository")
  */
-class Rating
+class Borrow
 {
     /**
      * @ORM\Id()
@@ -17,24 +18,19 @@ class Rating
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $comment;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $note;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="ratings")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="borrows")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="ratings")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="borrows")
      */
     private $game;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isReturned;
 
     /**
      * @ORM\Column(type="datetime")
@@ -49,30 +45,6 @@ class Rating
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getComment(): ?string
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?string $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    public function getNote(): ?int
-    {
-        return $this->note;
-    }
-
-    public function setNote(int $note): self
-    {
-        $this->note = $note;
-
-        return $this;
     }
 
     public function getUser(): ?User
@@ -95,6 +67,18 @@ class Rating
     public function setGame(?Game $game): self
     {
         $this->game = $game;
+
+        return $this;
+    }
+
+    public function getIsReturned(): ?bool
+    {
+        return $this->isReturned;
+    }
+
+    public function setIsReturned(bool $isReturned): self
+    {
+        $this->isReturned = $isReturned;
 
         return $this;
     }

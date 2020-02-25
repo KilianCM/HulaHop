@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}HulaHop - Liste de jeux{% endblock %}
 
 {% block body %}
     <div class="content">
-        <h1 class="title">My First Page</h1>
+        <h1>Liste des jeux disponibles</h1>
+        <ul>
+            {% for game in games %}
+                <li>{{ game.name }} - {{ game.category.name }}</li>
+            {% else %}
+                <p>Pas de jeu disponible</p>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

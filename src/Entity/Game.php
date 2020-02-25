@@ -48,20 +48,26 @@ class Game
      */
     private $ratings;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="games")
-     */
-    private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="games")
      */
     private $category;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Borrow", mappedBy="game")
+     */
+    private $borrows;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isBorrowed = false;
+
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->borrows = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,34 +166,6 @@ class Game
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addGame($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeGame($this);
-        }
-
-        return $this;
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -196,6 +174,55 @@ class Game
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Borrow[]
+     */
+    public function getBorrows(): Collection
+    {
+        return $this->borrows;
+    }
+
+    public function addBorrow(Borrow $borrow): self
+    {
+        if (!$this->borrows->contains($borrow)) {
+            $this->borrows[] = $borrow;
+            $borrow->setGame($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBorrow(Borrow $borrow): self
+    {
+        if ($this->borrows->contains($borrow)) {
+            $this->borrows->removeElement($borrow);
+            // set the owning side to null (unless already changed)
+            if ($borrow->getGame() === $this) {
+                $borrow->setGame(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function checkIfBorrowed() {
+        $this->borrows->filter(function(Borrow $borrow) {
+            return !$borrow->getIsReturned();
+        });
+    }
+
+    public function getIsBorrowed(): ?bool
+    {
+        return $this->isBorrowed;
+    }
+
+    public function setIsBorrowed(bool $isBorrowed): self
+    {
+        $this->isBorrowed = $isBorrowed;
 
         return $this;
     }

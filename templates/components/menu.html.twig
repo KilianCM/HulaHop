@@ -18,11 +18,15 @@
             <p>Joueur occasionnel</p>
         </div>
     </div>
+    {% else %}
+        <a href="{{ path('app_login') }}">Se connecter</a>
     {% endif %}
 
     <div class="nav-menu">
         <div class="nav-item">
-            <div class="btn btn-primary">Ma collection</div>
+            <div class="btn btn-primary">
+                <a href="{{ path('user_borrows') }}">Mes derniers emprunts</a>
+            </div>
         </div>
         <div class="nav-item">
             <div class="btn btn-primary">Trouver des joueurs</div>

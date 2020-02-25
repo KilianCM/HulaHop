@@ -58,20 +58,20 @@ class User implements UserInterface
     private $ratings;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", inversedBy="users")
-     */
-    private $games;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="friends")
      */
     private $friends;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Borrow", mappedBy="user")
+     */
+    private $borrows;
+
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
-        $this->games = new ArrayCollection();
         $this->friends = new ArrayCollection();
+        $this->borrows = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,33 +218,6 @@ class User implements UserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|Game[]
-     */
-    public function getGames(): Collection
-    {
-        return $this->games;
-    }
-
-    public function addGame(Game $game): self
-    {
-        if (!$this->games->contains($game)) {
-            $this->games[] = $game;
-        }
-
-        return $this;
-    }
-
-    public function removeGame(Game $game): self
-    {
-        if ($this->games->contains($game)) {
-            $this->games->removeElement($game);
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|self[]
      */
@@ -266,6 +239,37 @@ class User implements UserInterface
     {
         if ($this->friends->contains($friend)) {
             $this->friends->removeElement($friend);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Borrow[]
+     */
+    public function getBorrows(): Collection
+    {
+        return $this->borrows;
+    }
+
+    public function addBorrow(Borrow $borrow): self
+    {
+        if (!$this->borrows->contains($borrow)) {
+            $this->borrows[] = $borrow;
+            $borrow->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBorrow(Borrow $borrow): self
+    {
+        if ($this->borrows->contains($borrow)) {
+            $this->borrows->removeElement($borrow);
+            // set the owning side to null (unless already changed)
+            if ($borrow->getUser() === $this) {
+                $borrow->setUser(null);
+            }
         }
 
         return $this;

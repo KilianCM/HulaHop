@@ -12,6 +12,11 @@
     text-decoration: none;
   }
 
+  #logo {
+    width: 200px;
+    margin: 15px;
+  }
+
   .logged-user{
     margin-top: 20px;
     display: flex;
@@ -45,6 +50,12 @@
     height: 50px;
     overflow: hidden;
     align-items: center;
+
+    #logo {
+      margin: 5px;
+      width: unset;
+      height: 40px;
+    }
 
     &.burger-click{
       height: 100vh;

@@ -9,7 +9,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #app-wrapper {
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  @include mobile{
+    flex-wrap: wrap;
+  }
+
 }
 
 body{
@@ -22,12 +25,25 @@ h1, h2, h3, h4, h5, .title{
 }
 h1{
   font-size: 2rem;
+  font-weight: bold;
+  color:$gray;
+  margin-bottom: 20px;
 
 }
-
+.font-bold{
+  font-weight: bold;
+}
+.font-italic{
+  font-style: italic;
+}
 .site-content {
-  padding: 10px;
-  margin: 0 auto;
+  @include not-mobile{
+    padding-left: 270px;
+    padding-top: 20px;
+  }
+  @include mobile{
+    padding-top: 70px;
+  }
   &.burger-click{
     display: none;
   }

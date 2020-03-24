@@ -1,4 +1,5 @@
 #menu {
+  position: fixed;
   background-color: $gray;
   color: $white;
   width: 15vw;
@@ -6,6 +7,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 0px 0px 15px black;
+
+  @include not-mobile{
+    max-width: 230px;
+  }
 
   a{
     color: $white;
@@ -28,13 +34,45 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      padding-left: 0;
     }
+  }
+  .user-infos{
+    padding-left: 15px;
   }
   .nav-menu{
     margin-top: 20px;
-
+    padding-left: 15px;
     .nav-item{
       margin-bottom: 10px;
+      cursor: pointer;
+      &:hover{
+        font-weight: bold;
+      }
+      a{
+        span{
+          margin-top: 2px;
+          width: 0;
+          display: block;
+          height: 2px;
+          background-color:$white;
+          transition: .5s;
+        }
+
+        &:hover{
+          span{
+            width: 100%;
+          }
+        }
+      }
+      .active{
+          font-weight: bold;
+          a{
+            span{
+              width: 100%;
+            }
+          }
+      }
     }
   }
 
@@ -42,6 +80,10 @@
     min-height: 100vh;
     padding-left: 10px;
     padding-top: 10px;
+
+    .title{
+      padding-left: 10px;
+    }
   }
 
 
@@ -49,7 +91,6 @@
     width: 100vw;
     height: 50px;
     overflow: hidden;
-    align-items: center;
 
     #logo {
       margin: 5px;
@@ -63,11 +104,15 @@
 
     .title {
       min-height: 100%;
-      width: 100%;
+      width: calc(100% - 10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0px 10px;
+
+      &:hover{
+        cursor: pointer;
+      }
+
       &.burger-click{
         min-height: auto;
       }
@@ -81,12 +126,11 @@
     }
     .nav-menu {
       opacity: 0;
-      height: 100%;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      padding-top: 20px;
 
       .nav-item{
         margin-bottom: 20px;
@@ -140,6 +184,47 @@
       -ms-transform: translateY(-13px) rotate(-45deg);
       -o-transform: translateY(-13px) rotate(-45deg);
       transform: translateY(-13px) rotate(-45deg);
+    }
+  }
+  .log-btn{
+    margin-top: 20px;
+    bottom: 50px;
+    width: 100%;
+    a{
+      display: block;
+      width: calc(100% - 32px);
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      transition: .3s;
+
+      @include mobile{
+        margin: 0 auto;
+      }
+    }
+    &.signup{
+      a{
+        background-color: $red;
+        &:hover{
+          background-color: $red-hover;
+        }
+      }
+    }
+    &.login{
+      a{
+        background-color: $blue;
+        &:hover{
+          background-color: $blue-hover;
+        }
+      }
+    }
+    &.logout{
+      a{
+        background-color: $red;
+        &:hover{
+          background-color: $red-hover;
+        }
+      }
     }
   }
 }

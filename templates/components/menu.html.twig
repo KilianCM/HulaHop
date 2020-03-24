@@ -1,7 +1,9 @@
+{% set currentPath = path(app.request.attributes.get('_route'),
+    app.request.attributes.get('_route_params')) %}
+
 <div id="menu" >
     <div class="title">
         <a href="/"><img id="logo" src="{{asset('build/images/hulahop-logo.png')}}" alt="Logo"></a>
-
 
         <div class="hamburger" id="hamburger-1">
             <span class="line"></span>
@@ -15,26 +17,43 @@
         <img src="https://cdn1.iconfinder.com/data/icons/ice-cream-emoticon-sticker/64/ice_cream-21-512.png" alt="">
         <div class="user-infos">
             <p class="font-bold">{{ app.user.username }}</p>
-            <p>Joueur occasionnel</p>
+            <p class="font-italic">Joueur occasionnel</p>
         </div>
+
     </div>
-    {% else %}
-        <a href="{{ path('app_login') }}">Se connecter</a>
+
     {% endif %}
 
     <div class="nav-menu">
         <div class="nav-item">
-            <div class="btn btn-primary">
-                <a href="{{ path('user_borrows') }}">Mes derniers emprunts</a>
+            <div class="btn btn-primary {% if currentPath == path('home_page') %} active{% endif %}">
+                <a href="{{ path('home_page') }}">Liste des jeux <span></span></a>
             </div>
         </div>
         <div class="nav-item">
-            <div class="btn btn-primary">Trouver des joueurs</div>
+            <div class="btn btn-primary {% if currentPath == path('user_borrows') %} active{% endif %}">
+                <a href="{{ path('user_borrows') }}">Mes derniers emprunts <span></span></a>
+            </div>
         </div>
         <div class="nav-item">
-            <div class="btn btn-primary">Bonnes affaires</div>
+            <div class="btn btn-primary">Trouver des joueurs <span></span></div>
+        </div>
+        <div class="nav-item">
+            <div class="btn btn-primary">Bonnes affaires <span></span></div>
         </div>
     </div>
+    {% if app.user %}
+        <div class="log-btn logout">
+            <a href="{{ path('app_logout') }}">Se deconnecter</a>
+        </div>
+    {% else %}
+        <div class="log-btn signup">
+            <a href="{{ path('app_register') }}">S'inscrire</a>
+        </div>
+        <div class="log-btn login">
+            <a href="{{ path('app_login') }}">Se connecter</a>
+        </div>
+    {% endif %}
 
 
 </div>

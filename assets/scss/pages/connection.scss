@@ -1,6 +1,11 @@
 .connection-page{
   height: calc(100vh - 70px);
+  width: calc(100vw - 270px);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mobile{
+    width: 100vw;
+  }
 }

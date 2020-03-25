@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Borrow;
 use App\Entity\Game;
+use App\Repository\GameRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,6 +30,17 @@ class GameController extends AbstractController
         $entityManager->flush();
 
         return new RedirectResponse("/");
+    }
+
+    /**
+     * @Route("game/description/{id}", name="description_game")
+     * 
+     */
+    public function showDescriptionGame(GameRepository $gameRepository, $id) {
+        $game = $gameRepository->find($id);
+        return $this->render('game/details.html.twig', [
+            'game' => $game
+        ]);
     }
 
 }

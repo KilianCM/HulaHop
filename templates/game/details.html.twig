@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{game.name}}{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>{{game.name}}</h1>
+        <div class="img">
+            <img src="{{game.imageUrl}}" width=300 height=200 alt="">
+        </div>
+        <div class="informations">
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">{% if game.isBorrowed %} Non disponible {% else %} Disponible {% endif %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Categorie</th>
+                        <td>{{game.category.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Description</h2>
+        {{game.description}}
+    </div>
+{% endblock %}

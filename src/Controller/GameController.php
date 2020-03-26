@@ -34,7 +34,9 @@ class GameController extends AbstractController
 
     /**
      * @Route("game/description/{id}", name="description_game")
-     * 
+     * @param GameRepository $gameRepository
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showDescriptionGame(GameRepository $gameRepository, $id) {
         $game = $gameRepository->find($id);

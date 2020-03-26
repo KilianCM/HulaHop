@@ -1,0 +1,102 @@
+.game-details{
+  .game-container{
+
+    .right-side{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include desktop{
+        max-width: 40vw;
+      }
+      @include tablet{
+        width: 60vw;
+      }
+      @include mobile{
+        width: calc(100vw - 40px);
+        padding: 0 20px;
+      }
+
+
+      .desc-title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .dispo{
+        font-weight: bold;
+
+        span.true{
+          color:$green;
+        }
+        span.false{
+          color:$red-hover;
+        }
+      }
+      .cat{
+        font-weight: bold;
+
+        a{
+          color: $lightgray;
+          text-decoration: none;
+          transition: .3s;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .borrow{
+        display: flex;
+        align-items: flex-end;
+
+        a{
+          padding: 10px 20px;
+          text-decoration: none;
+          color:$white;
+          font-weight: bold;
+          transition: .3s;
+          background-color: $blue;
+          border-radius: 5px;
+          box-shadow: 0px 0px 3px gray;
+          &:hover{
+            box-shadow: 0px 0px 0px gray;
+          }
+        }
+
+        @include mobile{
+          margin-top: 15px;
+          justify-content: center;
+
+          a{
+            width:100%;
+            text-align: center;
+            box-shadow: 0px 0px 5px gray;
+            &:hover{
+              box-shadow: 0px 0px 0px black;
+            }
+          }
+        }
+      }
+      p{
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .img{
+    width: 100%;
+    margin-bottom: 30px;
+    img{
+      @include desktop{
+        width: 40vw;
+      }
+      @include tablet{
+        width: 60vw;
+      }
+      @include mobile{
+        width: calc(100vw - 40px);
+        padding: 0 20px;
+      }
+    }
+  }
+}

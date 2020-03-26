@@ -3,28 +3,25 @@
 {% block title %}{{game.name}}{% endblock %}
 
 {% block body %}
-    <div class="content">
+    <div class="content game-details">
         <h1>{{game.name}}</h1>
-        <div class="img">
-            <img src="{{game.imageUrl}}" width=300 height=200 alt="">
+        <div class="game-container">
+            <div class="left-side">
+                <div class="img">
+                    <img src="{{game.imageUrl}}" width=300 alt="">
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="details">
+                    <p class="dispo"><span class="title">État : </span> {% if game.isBorrowed %} <span class="false">Non disponible</span> {% else %} <span class="true">Disponible</span> {% endif %}</p>
+                    <p class="cat"><span class="title">Categorie :</span> <a href="#">{{game.category.name}}</a></p>
+                    <p class="desc-title">Description</p>
+                    <p class="desc">{{game.description}}</p>
+                </div>
+                <div class="borrow">
+                    <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
+                </div>
+            </div>
         </div>
-        <div class="informations">
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">{% if game.isBorrowed %} Non disponible {% else %} Disponible {% endif %}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Categorie</th>
-                        <td>{{game.category.name}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <h2>Description</h2>
-        {{game.description}}
     </div>
 {% endblock %}

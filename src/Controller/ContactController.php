@@ -23,7 +23,7 @@ class ContactController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function home(Request $request, MailerInterface $mailer): Response
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);

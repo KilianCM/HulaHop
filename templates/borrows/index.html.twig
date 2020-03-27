@@ -10,9 +10,13 @@
             <div>
                {{ borrow.game.name }}
             </div>
-            <div class="borrow">
-                <a href="{{ path("return_game", { 'id' : borrow.game.id }) }}" class="btn">Rendre ce jeu</a>
-            </div>
+            {% if borrow.isReturned == false %}
+                <div class="borrow">
+                    <a href="{{ path("return_game", { 'id' : borrow.game.id }) }}" class="btn">Rendre ce jeu</a>
+                </div>
+            {% else %}
+                <p>Jeu rendu</p>
+            {% endif %}
         {% else %}
             <p>Vous n'avez jamais emprunté de jeu.</p>
         {% endfor %}

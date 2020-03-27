@@ -1,26 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HulaHop - Liste de jeux{% endblock %}
+{% block title %} HulaHop {% endblock %}
 
 {% block body %}
-    <div class="content home-page">
-        <h1>Liste des jeux disponibles</h1>
-        <div class="games-container">
-            {% for game in games %}
-            <div class="game game-{{ loop.index }}">
-                <div class="img"><a href="{{ path("description_game", { 'id' : game.id }) }}"><img src="{{ game.imageUrl }}" alt=""></a></div>
-                <a href="{{ path("description_game", { 'id' : game.id }) }}" class="title"><h2>{{ game.name }}</h2></a>
-                <div class="category">{{ game.category.name }}</div>
-                <div class="borrow">
-                    <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
-                </div>
-                <style>
-                    .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ loop.index }}s;animation-fill-mode: forwards;}
-                </style>
-            </div>
-            {% else %}
-                <p>Pas de jeu disponible</p>
-            {% endfor %}
-        </div>
-    </div>
+    <h1>Bienvenue chez HulaHop !</h1>
+    <p>
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet tortor ipsum. Duis euismod mi eu sapien vulputate feugiat. Proin et lacus aliquet, pretium orci vel, vestibulum lectus. Phasellus eget nisl diam. Aenean semper, mauris ac dictum accumsan, tortor dolor congue arcu, eu tincidunt sem libero in massa. Phasellus ullamcorper eleifend est, quis tincidunt urna dignissim non. Proin commodo lorem non magna bibendum tincidunt efficitur sed massa.
+
+        Aenean facilisis, purus nec pulvinar consequat, nisi magna consectetur odio, vel consequat arcu ipsum et odio. Suspendisse nec mauris eget nunc posuere venenatis nec vitae augue. Nullam elit ex, scelerisque feugiat commodo ut, sodales a magna. In lectus tortor, scelerisque ac posuere finibus, bibendum vehicula arcu. Nullam volutpat neque et neque convallis dapibus. In vel ipsum arcu. Quisque eleifend pretium tortor aliquet interdum. Nunc porta ac sem quis accumsan. Nullam a faucibus ante. Aliquam finibus ligula leo, nec rhoncus sem maximus vel. Curabitur quis pulvinar arcu, tristique lacinia ante.
+
+        Sed eu rhoncus ligula. Pellentesque auctor, quam sed luctus feugiat, lectus erat aliquam mi, sit amet maximus est quam a nisi. Vivamus purus magna, lacinia eget odio non, lobortis laoreet neque. Duis tellus nisl, malesuada eu elementum eu, gravida in ligula. Cras enim sapien, efficitur vitae nunc et, bibendum lobortis libero. Etiam ac mauris urna. Integer et faucibus urna. Suspendisse potenti. Curabitur in varius sapien. Nulla vel lobortis nibh. Proin gravida dolor ante, nec viverra tellus condimentum vitae.
+
+        Maecenas at gravida elit. Curabitur sit amet molestie turpis. Etiam sapien diam, iaculis et egestas id, finibus eget metus. Etiam nisi sem, feugiat ut pharetra a, rutrum et eros. Nullam pharetra aliquam nibh, vitae hendrerit nunc dignissim vitae. Vivamus nisi nulla, porta at orci sed, tincidunt malesuada tellus. Curabitur posuere tempor massa, vitae tincidunt sem interdum sed. Sed sed lectus eros.
+
+        Donec pretium mi purus, a mattis risus efficitur vel. Aliquam enim urna, tincidunt et laoreet viverra, efficitur et neque. Praesent blandit cursus urna, nec hendrerit quam imperdiet ac. Cras convallis ante ipsum, nec porta dolor finibus fringilla. Ut venenatis porta erat in facilisis. Nullam magna dolor, lobortis eu urna sit amet, maximus fermentum odio. Integer a eros eu magna congue viverra sit amet non ex. Phasellus id aliquet dolor. Nulla eget pellentesque metus. Pellentesque nisl justo, porta a facilisis commodo, scelerisque vel mi. In augue urna, feugiat eget pretium vitae, dapibus non tellus. Ut suscipit vel tellus eget vestibulum. Maecenas in porta enim. </p>
 {% endblock %}

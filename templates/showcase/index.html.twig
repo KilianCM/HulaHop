@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HulaHop - Liste de jeux{% endblock %}
+
+{% block body %}
+    <div class="content home-page">
+        <h1>Liste des jeux disponibles</h1>
+        <div class="games-container">
+            {% for game in games %}
+            <div class="game game-{{ loop.index }}">
+                <div class="img"><a href="{{ path("description_game", { 'id' : game.id }) }}"><img src="{{ game.imageUrl }}" alt=""></a></div>
+                <a href="{{ path("description_game", { 'id' : game.id }) }}" class="title"><h2>{{ game.name }}</h2></a>
+                <div class="category">{{ game.category.name }}</div>
+                <div class="borrow">
+                    <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
+                </div>
+                <style>
+                    .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: {{ loop.index }}s;animation-fill-mode: forwards;}
+                </style>
+            </div>
+            {% else %}
+                <p>Pas de jeu disponible</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

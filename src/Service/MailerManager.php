@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\Borrow;
+use App\Form\ContactFormType;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
@@ -31,4 +32,7 @@ class MailerManager
 
         $this->mailer->send($email);
     }
+
+
+
 }

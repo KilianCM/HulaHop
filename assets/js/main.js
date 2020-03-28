@@ -4,7 +4,8 @@ import Map from "./components/map";
 window.addEventListener("DOMContentLoaded", (event) => {
     burger();
     currentMenu();
-    const map = new Map().init("map");
+    const map = new Map("map");
+    map.addMarkerAndZoom(12,12)
 })
 
 function burger(){

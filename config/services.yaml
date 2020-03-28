@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     hulaHopAddress: '%env(MAILER_ADDRESS)%'
+    photonBaseUrl: '%env(PHOTON_API_URL)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -29,4 +30,8 @@ services:
     App\Services\MailerManager:
         arguments:
             $hulaHopAddress: '%hulaHopAddress%'
+
+    App\Services\PhotonApi:
+        arguments:
+            $baseUrl: '%photonBaseUrl%'
 

@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Services\PhotonApi;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +19,23 @@ class LocateController extends AbstractController
      * @return Response
      */
     public function findGamers() {
-        return $this->render('locate/index.html.twig');
+        return $this->render('locate/index.html.twig', [
+            "latitude" => $this->getUser()->getLatitude(),
+            "longitude" => $this->getUser()->getLongitude()
+        ]);
+    }
+
+    /**
+     * @Route("/locate/add", name="add_user_address")
+     * @Method("GET")
+     * @param PhotonApi $photonApi
+     * @return void
+     */
+    public function addAddress(PhotonApi $photonApi, EntityManagerInterface $entityManager) {
+        $coordinates = $photonApi->transformAddressToCoordinate("607 route de la forêt 73270 Villard sur Doron");
+        $this->getUser()->setLatitude($coordinates[0]);
+        $this->getUser()->setLongitude($coordinates[1]);
+        $entityManager->persist($this->getUser());
+        $entityManager->flush();
     }
 }

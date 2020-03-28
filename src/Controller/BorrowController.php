@@ -23,7 +23,7 @@ class BorrowController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return RedirectResponse
      */
-    public function return(
+    public function returnGame(
         MailerManager $mailerManager,
         Borrow $borrow,
         EntityManagerInterface $entityManager

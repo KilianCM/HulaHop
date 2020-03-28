@@ -25,10 +25,13 @@ class OpenStreetMap {
     }
 
     addMarkerAndZoom(latitude, longitude) {
-        const icon = L.icon.pulse({ color: '#00adb5', fillColor: '#00adb5', heartbeat: 3 });
-        //add marker
-        L.marker([latitude, longitude], { icon: icon }).addTo(this.map);
+        this.addMarker(latitude, longitude,'#00adb5');
         this.map.setView(new L.LatLng(latitude, longitude), 12);
+    }
+
+    addMarker(latitude, longitude, color) {
+        const icon = L.icon.pulse({ color: color, fillColor: color, heartbeat: 3 });
+        L.marker([latitude, longitude], { icon: icon }).addTo(this.map);
     }
 }
 

@@ -5,7 +5,9 @@
 {% block body %}
     <h1>Trouve des joueurs proche de toi !</h1>
 
-    <div id="map"></div>
+    {% if app.user.latitude and app.user.longitude %}
+        <div id="map"></div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

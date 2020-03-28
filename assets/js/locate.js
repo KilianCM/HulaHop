@@ -9,7 +9,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         if (xhr.status >= 200 && xhr.status < 300) {
             // What do when the request is successful
             const response = JSON.parse(xhr.response);
-            map.addMarkerAndZoom(response[0],response[1])
+            map.addMarkerAndZoom(response["currentUser"][0],response["currentUser"][1]);
+            response["otherUsers"].forEach(coordinate => {
+                map.addMarker(coordinate["latitude"], coordinate["longitude"], "#E75A5F")
+            })
         }
     };
     xhr.open('GET', '/locate/user');

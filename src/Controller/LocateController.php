@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Repository\UserRepository;
 use App\Services\PhotonApi;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -19,10 +20,7 @@ class LocateController extends AbstractController
      * @return Response
      */
     public function findGamers() {
-        return $this->render('locate/index.html.twig', [
-            "latitude" => $this->getUser()->getLatitude(),
-            "longitude" => $this->getUser()->getLongitude()
-        ]);
+        return $this->render('locate/index.html.twig');
     }
 
     /**
@@ -42,8 +40,17 @@ class LocateController extends AbstractController
     /**
      * @Route("/locate/user", name="get_user_coordinate")
      * @Method("GET")
+     * @param UserRepository $userRepository
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getUserCoordinate() {
-        return $this->json([$this->getUser()->getLatitude(), $this->getUser()->getLongitude()]);
+    public function getUserCoordinates(UserRepository $userRepository) {
+        $coordinates = $userRepository->findAllCoordinatesWithoutCurrent($this->getUser()->getId());
+        return $this->json([
+            "currentUser" => [
+                $this->getUser()->getLatitude(),
+                $this->getUser()->getLongitude()
+            ],
+            "otherUsers" => $coordinates
+        ]);
     }
 }

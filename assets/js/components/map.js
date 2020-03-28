@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 require('leaflet-easybutton');
 require('@ansur/leaflet-pulse-icon');
 
-class Map {
+class OpenStreetMap {
 
     constructor(mapId, center = [45.5, 2], zoom = 5) {
         this.map = L.map(mapId, { center: center, zoom: zoom });
@@ -32,4 +32,4 @@ class Map {
     }
 }
 
-export default Map;
+export default OpenStreetMap;

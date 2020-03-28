@@ -33,9 +33,17 @@ class LocateController extends AbstractController
      */
     public function addAddress(PhotonApi $photonApi, EntityManagerInterface $entityManager) {
         $coordinates = $photonApi->transformAddressToCoordinate("607 route de la forêt 73270 Villard sur Doron");
-        $this->getUser()->setLatitude($coordinates[0]);
-        $this->getUser()->setLongitude($coordinates[1]);
+        $this->getUser()->setLongitude($coordinates[0]);
+        $this->getUser()->setLatitude($coordinates[1]);
         $entityManager->persist($this->getUser());
         $entityManager->flush();
+    }
+
+    /**
+     * @Route("/locate/user", name="get_user_coordinate")
+     * @Method("GET")
+     */
+    public function getUserCoordinate() {
+        return $this->json([$this->getUser()->getLatitude(), $this->getUser()->getLongitude()]);
     }
 }

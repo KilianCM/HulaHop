@@ -6,5 +6,9 @@
     <h1>Trouve des joueurs proche de toi !</h1>
 
     <div id="map"></div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('js/locate') }}
 {% endblock %}

@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\Form\ContactFormType;
+use App\Forms\ContactFormType;
 use App\Services\MailerManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

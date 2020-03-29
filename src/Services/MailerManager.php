@@ -17,7 +17,6 @@ class MailerManager
     {
         $this->mailer = $mailer;
         $this->hulaHopAddress = $hulaHopAddress;
-        dd($hulaHopAddress);
     }
 
     public function sendReturnGameMail(Borrow $borrow)

@@ -5,10 +5,8 @@ namespace App\Controller;
 
 
 use App\Forms\AddressFormType;
-use App\Forms\ContactFormType;
 use App\Repository\UserRepository;
-use App\Services\PhotonApi;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Services\UserManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,22 +21,16 @@ class LocateController extends AbstractController
      * @Route("/locate", name="locate_gamers")
      * @Method("GET")
      * @param Request $request
-     * @param PhotonApi $photonApi
-     * @param EntityManagerInterface $entityManager
+     * @param UserManager $manager
      * @return Response
      */
-    public function findGamers(Request $request, PhotonApi $photonApi, EntityManagerInterface $entityManager) {
+    public function findGamers(Request $request, UserManager $manager) {
         $form = $this->createForm(AddressFormType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $address = $form->get("address")->getData();
-            $this->getUser()->setAddress($address);
-            $coordinates = $photonApi->transformAddressToCoordinate($address);
-            $this->getUser()->setLatitude($coordinates[1]);
-            $this->getUser()->setLongitude($coordinates[0]);
-            $entityManager->persist($this->getUser());
-            $entityManager->flush();
+            $manager->addAddress($this->getUser(), $address);
             return new RedirectResponse("/locate");
         }
 
@@ -46,7 +38,7 @@ class LocateController extends AbstractController
             "addressForm" => $form->createView()
         ]);
     }
-    
+
     /**
      * @Route("/locate/user", name="get_user_coordinate")
      * @Method("GET")

@@ -17,7 +17,7 @@ class ContactController extends AbstractController
      * @Route("/contact", name="contact_page")
      * @param Request $request
      * @param MailerManager $mailerManager
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function contact(Request $request, MailerManager $mailerManager): Response
     {

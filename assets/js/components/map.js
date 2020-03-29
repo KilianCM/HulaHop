@@ -24,14 +24,23 @@ class OpenStreetMap {
         }).addTo(this.map);
     }
 
-    addMarkerAndZoom(latitude, longitude) {
-        this.addMarker(latitude, longitude,'#00adb5');
-        this.map.setView(new L.LatLng(latitude, longitude), 12);
+    addMarkerAndZoom(user, popupContent) {
+        this.addMarker(user,'#00adb5', popupContent);
+        this.map.setView(new L.LatLng(user.latitude, user.longitude), 12);
     }
 
-    addMarker(latitude, longitude, color) {
+    addMarker(user, color, popupContent) {
         const icon = L.icon.pulse({ color: color, fillColor: color, heartbeat: 3 });
-        L.marker([latitude, longitude], { icon: icon }).addTo(this.map);
+        const latlng = [user.latitude, user.longitude];
+        const marker = L.marker(latlng, { icon: icon }).addTo(this.map);
+
+        if(popupContent) {
+            const popup = L.popup()
+                .setLatLng(latlng)
+                .setContent(popupContent)
+                .openOn(this.map);
+            marker.bindPopup(popup);
+        }
     }
 }
 

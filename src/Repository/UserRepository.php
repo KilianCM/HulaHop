@@ -36,10 +36,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    public function findAllCoordinatesWithoutCurrent($currendUserId)
+    public function findAllWithoutCurrent($currendUserId)
     {
         $qb = $this->createQueryBuilder('user')
-            ->select('user.latitude, user.longitude')
+            ->select('user.id, user.name, user.latitude, user.longitude')
             ->where('user.id != :id')
             ->setParameter('id', $currendUserId)
             ->getQuery();

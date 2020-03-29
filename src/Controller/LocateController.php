@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class LocateController extends AbstractController
 {
@@ -27,6 +29,7 @@ class LocateController extends AbstractController
      * @Route("/locate/add", name="add_user_address")
      * @Method("GET")
      * @param PhotonApi $photonApi
+     * @param EntityManagerInterface $entityManager
      * @return void
      */
     public function addAddress(PhotonApi $photonApi, EntityManagerInterface $entityManager) {
@@ -43,14 +46,11 @@ class LocateController extends AbstractController
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getUserCoordinates(UserRepository $userRepository) {
-        $coordinates = $userRepository->findAllCoordinatesWithoutCurrent($this->getUser()->getId());
+    public function getUserCoordinates(UserRepository $userRepository, SerializerInterface $serializer) {
+        $users = $userRepository->findAllWithoutCurrent($this->getUser()->getId());
         return $this->json([
-            "currentUser" => [
-                $this->getUser()->getLatitude(),
-                $this->getUser()->getLongitude()
-            ],
-            "otherUsers" => $coordinates
+            "currentUser" => $serializer->serialize($this->getUser(), 'json', ['groups' => ['user']]),
+            "otherUsers" => $users
         ]);
     }
 }

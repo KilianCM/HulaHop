@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -22,6 +23,7 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -38,6 +40,7 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
@@ -68,11 +71,13 @@ class User implements UserInterface
     private $borrows;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="float", nullable=true)
      */
     private $latitude;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="float", nullable=true)
      */
     private $longitude;

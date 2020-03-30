@@ -9,16 +9,36 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #app-wrapper {
   padding: 0;
   display: flex;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
   @include mobile{
     flex-wrap: wrap;
   }
-
+  &::before{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    background:
+            linear-gradient(
+                            rgba(255, 255, 255, 0.55),
+                            rgba(255, 255, 255, 0.55)
+            ),
+            url(/build/images/ice.svg) 0 0 repeat;
+    transform: rotate(-30deg);
+  }
 }
+
 
 body{
   font-size: 16px;
   font-family: 'Nunito Sans', sans-serif;
   background-color: $white;
+  position: relative;
 }
 h1, h2, h3, h4, h5, .title{
   font-family: 'Montserrat', sans-serif;

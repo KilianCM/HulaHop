@@ -1,81 +1,77 @@
-.home-page{
-
-  @include mobile{
-    h1{
-      text-align: center;
-    }
-  }
-  .games-container{
-    display: flex;
-    flex-wrap: wrap;
+.home-page {
+  &.container {
     padding: 0 20px;
-    justify-content: flex-start;
-    margin: 0 auto;
+    display: flex;
+    height: calc(100vh - 70px);
+    width: calc(100vw - 40px);
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 
-    .game{
-      padding: 20px;
-      margin: 15px 2%;
-      box-shadow: 0px 0px 7px gray;
-      width: 25%;
-      min-width: 220px;
+    h1 {
+      opacity: 0;
+      animation: fade-in-up 1s ease-in-out forwards;
+      animation-delay: 0s;
       margin-bottom: 30px;
+    }
 
-      @include mobile{
+    span{
+      color: $lightgray;
+    }
+
+    p {
+      opacity: 0;
+      animation: fade-in .5s ease-in-out forwards;
+      animation-delay: 1s;
+      margin-bottom: 30px;
+    }
+
+    a{
+      opacity: 0;
+      animation: fade-in .5s ease-in-out forwards;
+      animation-delay: 1.5s;
+    }
+
+    .logs{
+      display: flex;
+      justify-content: center;
+      .log-btn {
+        margin-top: 20px;
+        bottom: 50px;
         width: 100%;
-        min-width: 100px;
-        margin: 10px 5%;
-      }
+        @include not-mobile{
+          width: 20%;
+        }
 
-      .img{
-        margin-bottom: 10px;
-        img{
+
+        a {
           display: block;
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      .title{
-        display: block;
-        margin-bottom: 5px;
-        cursor: pointer;
-        text-decoration: none;
-        h2{
-          text-decoration: none;
-          font-weight: bold;
-          color: $blue;
-        }
-      }
-      .category{
-      }
-      .borrow{
-        display: flex;
-        justify-content: flex-end;
-
-        a{
-          padding: 10px 20px;
-          text-decoration: none;
-          color:$white;
-          font-weight: bold;
-          transition: .3s;
-          background-color: $blue;
+          width: calc(100% - 32px);
+          padding: 10px;
+          text-align: center;
           border-radius: 5px;
-          box-shadow: 0px 0px 3px gray;
-          &:hover{
-            box-shadow: 0px 0px 0px gray;
+          transition: .3s;
+          color:$white;
+          text-decoration: none;
+
+          @include mobile {
+            margin: 0 auto;
           }
         }
 
-        @include mobile{
-          margin-top: 15px;
-          justify-content: center;
-
+        &.signup {
+          a {
+            background-color: $red;
+            &:hover {
+              background-color: $red-hover;
+            }
+          }
+        }
+        &.login{
           a{
-            width:100%;
-            text-align: center;
-            box-shadow: 0px 0px 5px gray;
+            background-color: $blue;
             &:hover{
-              box-shadow: 0px 0px 0px black;
+              background-color: $blue-hover;
             }
           }
         }

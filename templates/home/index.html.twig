@@ -3,13 +3,39 @@
 {% block title %} HulaHop {% endblock %}
 
 {% block body %}
-    <h1>Bienvenue chez HulaHop !</h1>
-    <p>HulaHop est une ludothèque en ligne qui propose une série de jeu de société à emprunter. <br>
-        Partagez de bon moments en famille ou entre amis autour d'une gamme de jeu pour tout âge et de toutes catégories.
-        <br>
-        Vous voulez être au courant de bonnes affaires ? Vous souhaitez trouver vos amis HulaHopien ? <br>
-        Nous vous inquiétez pas HulaHop s'occupe de tout même de gérer vos emprunts !
-    </p>
-    <p>Inscrivez-vous afin de découvrir nos jeux !</p>
+    <div class="home-page container">
+        {% if not app.user %}
+            <h1>Bienvenue chez <span>HulaHop</span> !</h1>
+        {% else %}
+            <h1>Bonjour <span>{{app.user.name}}</span>,</h1>
+        {% endif %}
+        <p>
+            HulaHop est une ludothèque en ligne qui propose une série de jeu de société à emprunter. <br>
+            Partagez de bon moments en famille ou entre amis autour d'une gamme de jeu pour tout âge et de toutes catégories.
+        </p>
+        <p>
+            Vous voulez être au courant de bonnes affaires ? Vous souhaitez trouver vos amis HulaHopien ? <br>
+        </p>
+        {% if not app.user %}
+        <div class="logs">
+            <div class="log-btn signup">
+                <a href="{{ path('app_register') }}">S'inscrire</a>
+            </div>
+            <div class="log-btn login">
+                <a href="{{ path('app_login') }}">Se connecter</a>
+            </div>
+        </div>
+        {% else %}
+            <div class="logs">
+                <div class="log-btn login">
+                    <a href="{{ path('app_login') }}">Voir la liste des jeux</a>
+                </div>
+                <div class="log-btn signup">
+                    <a href="{{ path('app_login') }}">Mes emprunts</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
 
 {% endblock %}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="136px" height="167px" viewBox="0 0 136 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ice">
+            <ellipse id="Oval" fill="#DCDCDC" fill-rule="nonzero" cx="68" cy="46" rx="41" ry="31"></ellipse>
+            <path d="M35,40 L101,40 C105.4,40 109,43.6 109,48 L109,111 C109,115.4 105.4,119 101,119 L35,119 C30.6,119 27,115.4 27,111 L27,48 C27,43.6 30.6,40 35,40 Z" id="Path" fill="#DCDCDC" fill-rule="nonzero"></path>
+            <rect id="Rectangle" fill="#DCDCDC" fill-rule="nonzero" x="57" y="124" width="21" height="19"></rect>
+            <circle id="Oval" fill="#DCDCDC" fill-rule="nonzero" cx="67.5" cy="141.5" r="10.5"></circle>
+            <ellipse id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="68" cy="85" rx="11" ry="7"></ellipse>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="88.5" cy="73.5" r="5.5"></circle>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="47.5" cy="73.5" r="5.5"></circle>
+            <rect id="Rectangle" fill="#DCDCDC" fill-rule="nonzero" x="55" y="78" width="25" height="7"></rect>
+            <rect id="Rectangle" x="0" y="0" width="136" height="167"></rect>
+        </g>
+    </g>
+</svg>

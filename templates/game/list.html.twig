@@ -3,7 +3,7 @@
 {% block title %}HulaHop - Liste de jeux{% endblock %}
 
 {% block body %}
-    <div class="content home-page">
+    <div class="content game-list-page">
         <h1>Liste des jeux disponibles</h1>
         <div class="games-container">
             {% for game in games %}
@@ -15,7 +15,7 @@
                     <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
                 </div>
                 <style>
-                    .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: {{ loop.index }}s;animation-fill-mode: forwards;}
+                    .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ loop.index }}s;animation-fill-mode: forwards;}
                 </style>
             </div>
             {% else %}

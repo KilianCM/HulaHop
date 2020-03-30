@@ -1,0 +1,85 @@
+.borrow-list-page{
+  @include mobile{
+    h1{
+      text-align: center;
+    }
+  }
+  .games-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    justify-content: flex-start;
+    margin: 0 auto;
+
+    .game{
+      padding: 20px;
+      margin: 15px 2%;
+      box-shadow: 0px 0px 7px gray;
+      width: 25%;
+      min-width: 220px;
+      margin-bottom: 30px;
+      background-color:$white;
+
+      @include mobile{
+        width: 100%;
+        min-width: 100px;
+        margin: 10px 5%;
+      }
+
+      .img{
+        margin-bottom: 10px;
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .title{
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        h2{
+          text-decoration: none;
+          font-weight: bold;
+          color: $blue;
+        }
+      }
+      .category{
+      }
+      .borrow{
+        display: flex;
+        justify-content: flex-end;
+
+        a{
+          padding: 10px 20px;
+          text-decoration: none;
+          color:$white;
+          font-weight: bold;
+          transition: .3s;
+          background-color: $red;
+          border-radius: 5px;
+          box-shadow: 0px 0px 3px gray;
+          &:hover{
+            box-shadow: 0px 0px 0px gray;
+          }
+        }
+
+        @include mobile{
+          margin-top: 15px;
+          justify-content: center;
+
+          a{
+            width:100%;
+            text-align: center;
+            box-shadow: 0px 0px 5px gray;
+            &:hover{
+              box-shadow: 0px 0px 0px black;
+            }
+          }
+        }
+      }
+    }
+  }
+}

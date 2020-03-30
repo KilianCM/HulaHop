@@ -30,7 +30,7 @@ class Borrow
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isReturned;
+    private $isReturned = false;
 
     /**
      * @ORM\Column(type="datetime")

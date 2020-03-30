@@ -32,7 +32,7 @@ final class Version20200225152524 extends AbstractMigration
         $this->addSql('CREATE TABLE user_user (user_source INTEGER NOT NULL, user_target INTEGER NOT NULL, PRIMARY KEY(user_source, user_target))');
         $this->addSql('CREATE INDEX IDX_F7129A803AD8644E ON user_user (user_source)');
         $this->addSql('CREATE INDEX IDX_F7129A80233D34C1 ON user_user (user_target)');
-        $this->addSql('CREATE TABLE borrow (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user_id INTEGER DEFAULT NULL, game_id INTEGER DEFAULT NULL, is_returned BOOLEAN NOT NULL, created_at DATETIME NOT NULL)');
+        $this->addSql('CREATE TABLE borrow (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user_id INTEGER DEFAULT NULL, game_id INTEGER DEFAULT NULL, is_returned BOOLEAN DEFAULT FALSE, created_at DATETIME NOT NULL)');
         $this->addSql('CREATE INDEX IDX_55DBA8B0A76ED395 ON borrow (user_id)');
         $this->addSql('CREATE INDEX IDX_55DBA8B0E48FD905 ON borrow (game_id)');
         $this->addSql('CREATE TABLE rating (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, user_id INTEGER DEFAULT NULL, game_id INTEGER DEFAULT NULL, comment VARCHAR(255) DEFAULT NULL, note INTEGER NOT NULL, created_at DATETIME NOT NULL)');

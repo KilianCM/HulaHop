@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Trouver des joueurs {% endblock %}
+
+{% block body %}
+    <h1>Trouve des joueurs proche de toi !</h1>
+
+    {% if app.user.latitude and app.user.longitude %}
+        <div id="map"></div>
+    {% else %}
+        <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>
+        <div>
+            {{ form_start(addressForm) }}
+
+            {{ form_row(addressForm.address) }}
+            <button class="btn">OK</button>
+            {{ form_end(addressForm) }}
+        </div>
+        <p>Promis on l'utilise que pour la carte !</p>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('js/locate') }}
+{% endblock %}

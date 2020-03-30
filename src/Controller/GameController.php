@@ -8,6 +8,7 @@ use App\Entity\Borrow;
 use App\Entity\Game;
 use App\Repository\GameRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,6 +43,20 @@ class GameController extends AbstractController
         $game = $gameRepository->find($id);
         return $this->render('game/details.html.twig', [
             'game' => $game
+        ]);
+    }
+
+    /**
+     * @Route("/showcase", name="showcase_page")
+     * @Method("GET")
+     * @param GameRepository $gameRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function list(GameRepository $gameRepository) {
+        $games = $gameRepository->findBy(["isBorrowed" => false]);
+
+        return $this->render('game/list.html.twig', [
+            "games" => $games
         ]);
     }
 

@@ -36,7 +36,9 @@
             </div>
         </div>
         <div class="nav-item">
-            <div class="btn btn-primary">Trouver des joueurs <span></span></div>
+            <div class="btn btn-primary {% if currentPath == path('locate_gamers') %} active{% endif %}">
+                <a href="{{ path('locate_gamers') }}">Trouver des joueurs <span></span></a>
+            </div>
         </div>
         <div class="nav-item">
             <div class="btn btn-primary">Bonnes affaires <span></span></div>

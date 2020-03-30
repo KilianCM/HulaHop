@@ -1,15 +1,16 @@
 //$(this).toggleClass("is-active");
+
 window.addEventListener("DOMContentLoaded", (event) => {
     burger();
     currentMenu();
-})
+});
 
 function burger(){
-    burger = document.querySelector('.hamburger');
-    menu = document.querySelector('#menu');
-    title = document.querySelector('#menu .title');
-    nav = document.querySelector('#menu .nav-menu');
-    siteContent = document.querySelector('.site-content');
+    let burger = document.querySelector('.hamburger');
+    let menu = document.querySelector('#menu');
+    let title = document.querySelector('#menu .title');
+    let nav = document.querySelector('#menu .nav-menu');
+    let siteContent = document.querySelector('.site-content');
 
     burger.addEventListener("click", function(){
         menu.classList.toggle("burger-click");
@@ -21,7 +22,7 @@ function burger(){
 }
 
 function currentMenu(){
-    navLinks = document.querySelectorAll('.nav-item');
+    let navLinks = document.querySelectorAll('.nav-item');
     navLinks.forEach(active);
 
     function active (navLink){

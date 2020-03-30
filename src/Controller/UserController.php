@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,5 +37,18 @@ class UserController extends AbstractController
 
         return new Response("Friend added", Response::HTTP_OK);
     }
+
+    /**
+     * @Route("/profile", name="user_profile")
+     * @param User $user
+     * @return Response
+     */
+    public function profile(){
+        return $this->render('user/profile.html.twig', [
+            'user' => $this->getUser()
+        ]);
+    }
+
+
 
 }

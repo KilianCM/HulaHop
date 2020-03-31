@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes emprunts{% endblock %}
+{% block title %}Mes jeux{% endblock %}
 
 {% block body %}
     <div class="content borrow-list-page">
-        <h1 class="title">Mes emprunts</h1>
+        <h1 class="title">Mes jeux</h1>
         <div class="games-container">
         {% for borrow in borrows %}
             <div class="game game-{{ loop.index }}">

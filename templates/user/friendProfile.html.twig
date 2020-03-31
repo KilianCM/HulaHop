@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ user.name }} {% endblock %}
+
+{% block body %}
+
+    <h1>{{ user.name }}</h1>
+    <img src="{{ user.imageUrl }}" height="100" alt="">
+    <h2>Lieu</h2>
+    {% if user.address %}
+        {{ user.address }}
+    {% else %}
+        <p>{{ user.name }} n'a pas d'adresse</p>
+    {% endif %}
+    <div class="content borrow-list-page">
+    <h2 class="title">Les jeux de {{ user.name }}</h2>
+    <div class="games-container">
+    {% for borrow in user.borrows %}
+        <div class="game game-{{ loop.index }}">
+            <div class="img"><a href="{{ path("description_game", { 'id' : borrow.game.id }) }}"><img src="{{ borrow.game.imageUrl }}" alt=""></a></div>
+            <a href="{{ path("description_game", { 'id' : borrow.game.id }) }}" class="title"><h2>{{ borrow.game.name }}</h2></a>
+            <div class="category">{{ borrow.game.category.name }}</div>
+
+            <style>
+                .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ loop.index }}s;animation-fill-mode: forwards;}
+            </style>
+        </div>
+    {% else %}
+        <p>{{user.name}} n'a pas de jeux</p>
+    {% endfor %}
+
+
+{% endblock %}

@@ -14,10 +14,10 @@
 
     {% if app.user %}
     <div class="logged-user">
-        <a href="{{ path('user_profile') }}"><img src="https://cdn1.iconfinder.com/data/icons/ice-cream-emoticon-sticker/64/ice_cream-21-512.png" alt=""></a>
+        <img src="https://cdn1.iconfinder.com/data/icons/ice-cream-emoticon-sticker/64/ice_cream-21-512.png" alt="">
         <div class="user-infos">
             <p class="font-bold">{{ app.user.name }}</p>
-            <p class="font-italic">Joueur occasionnel</p>
+            <a href="{{ path('user_profile') }}"><p class="font-italic">Voir mon profil</p></a>
         </div>
 
     </div>
@@ -32,7 +32,12 @@
         </div>
         <div class="nav-item">
             <div class="btn btn-primary {% if currentPath == path('user_borrows') %} active{% endif %}">
-                <a href="{{ path('user_borrows') }}">Mes derniers emprunts <span></span></a>
+                <a href="{{ path('user_borrows') }}">Mes jeux <span></span></a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="btn btn-primary {% if currentPath == path('user_friends') %} active{% endif %}">
+                <a href="{{ path('user_friends') }}">Mes amis <span></span></a>
             </div>
         </div>
         <div class="nav-item">

@@ -5,7 +5,7 @@
 {% block body %}
 
     <h1>{{ user.name }}</h1>
-    {{ user.imageUrl }}
+    <img src="{{ user.imageUrl }}" width="300" alt="">
 
     <h2>Email</h2>
     <p>{{ user.email }}</p>
@@ -14,8 +14,34 @@
     <p>{{ user.address }}</p>
 
     <h2>Liste d'amis</h2>
+    {% for user in user.friends %}
+    <p>{{ user.imageUrl }}{{ user.name }}</p>
 
+    {% endfor %}
 
+    <div class="content borrow-list-page">
+    <h2 class="title">Mes jeux</h2>
+    <div class="games-container">
+        {% for borrow in user.borrows %}
+            <div class="game game-{{ loop.index }}">
+                <div class="img"><a href="{{ path("description_game", { 'id' : borrow.game.id }) }}"><img src="{{ borrow.game.imageUrl }}" alt=""></a></div>
+                <a href="{{ path("description_game", { 'id' : borrow.game.id }) }}" class="title"><h2>{{ borrow.game.name }}</h2></a>
+                <div class="category">{{ borrow.game.category.name }}</div>
+                <div class="borrow">
+                    {% if borrow.isReturned == false %}
+                        <a href="{{ path("return_game", { 'id' : borrow.id }) }}" class="btn">Rendre ce jeu</a>
+                    {% else %}
+                        <p>Jeu rendu</p>
+                    {% endif %}
+                </div>
+                <style>
+                    .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ loop.index }}s;animation-fill-mode: forwards;}
+                </style>
+            </div>
+        {% else %}
+            <p>Vous n'avez jamais emprunté de jeu.</p>
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

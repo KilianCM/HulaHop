@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mes amis {% endblock %}
+
+{% block body %}
+    <h1>Mes amis</h1>
+    {% for user in user.friends %}
+
+        <img src="{{ user.imageUrl }}" height="50" alt="">
+
+        <a href="{{ path('friend_profile', { 'id' : user.id }) }}"><h2>{{ user.name }}</h2></a>
+    {% endfor %}
+{% endblock %}

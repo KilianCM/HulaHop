@@ -40,7 +40,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile", name="user_profile")
-     * @param User $user
      * @return Response
      */
     public function profile(){
@@ -71,6 +70,10 @@ class UserController extends AbstractController
         return $this->render('user/friendProfile.html.twig', [
             'user' => $user
         ]);
+    }
+
+    public function editProfile($id, UserRepository $userRepository){
+        $users = $userRepository->find($id);
     }
 
 

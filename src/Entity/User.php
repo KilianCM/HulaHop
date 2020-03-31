@@ -82,6 +82,18 @@ class User implements UserInterface
      */
     private $longitude;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=5, nullable=true)
+     */
+    private $postalCode;
+
+
+
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
@@ -315,6 +327,30 @@ class User implements UserInterface
     public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): self
+    {
+        $this->postalCode = $postalCode;
 
         return $this;
     }

@@ -30,7 +30,12 @@ class LocateController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $address = $form->get("address")->getData();
-            $manager->addAddress($this->getUser(), $address);
+            $city = $form->get("city")->getData();
+            $postalCode = $form->get("postalCode")->getData();
+            $manager->addAddress($this->getUser(), $address, $city, $postalCode);
+
+
+
             return new RedirectResponse("/locate");
         }
 

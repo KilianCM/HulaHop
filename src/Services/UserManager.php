@@ -18,12 +18,16 @@ class UserManager
         $this->entityManager = $entityManager;
     }
 
-    public function addAddress(User $user, string $address) {
-        $user->setAddress($address);
+    public function addAddress(User $user, string $address, string $city, string $postalCode) {
+        $user
+            ->setAddress($address)
+            ->setCity($city)
+            ->setPostalCode($postalCode);
         $coordinates = $this->photonApi->transformAddressToCoordinate($address);
         $user->setLatitude($coordinates[1]);
         $user->setLongitude($coordinates[0]);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
+
 }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonnes affaires du moment{% endblock %}
+
+{% block body %}
+    <h1>Bonnes affaires du moment</h1>
+
+    {% for game in games %}
+        <div>
+            <img src="{{ game.images.small }}" alt="{{ game.name }}">
+            <a href="{{ game.url }}">{{ game.name }}</a>
+            <p>{{ game.price }}€</p>
+            <p>-{{ game.discount * 100 }}%</p>
+            <p>Ancien prix : {{ game.msrp }}€</p>
+        </div>
+        {% else %}
+        <p>Malheureusement, il n'y a pas de bonnes affaires en ce moment.</p>
+    {% endfor %}
+
+{% endblock %}

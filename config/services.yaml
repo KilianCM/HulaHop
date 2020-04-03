@@ -6,6 +6,8 @@
 parameters:
     hulaHopAddress: '%env(MAILER_ADDRESS)%'
     photonBaseUrl: '%env(PHOTON_API_URL)%'
+    boardGamesBaseUrl: '%env(BOARD_GAMES_API_URL)%'
+    boardGamesClientId: '%env(BOARD_GAMES_CLIENT_ID)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -34,4 +36,9 @@ services:
     App\Services\PhotonApi:
         arguments:
             $baseUrl: '%photonBaseUrl%'
+
+    App\Services\BoardGamesApi:
+        arguments:
+            $baseUrl: '%boardGamesBaseUrl%'
+            $clientId: '%boardGamesClientId%'
 

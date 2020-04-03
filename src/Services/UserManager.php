@@ -23,7 +23,8 @@ class UserManager
             ->setAddress($address)
             ->setCity($city)
             ->setPostalCode($postalCode);
-        $coordinates = $this->photonApi->transformAddressToCoordinate($address);
+        $fullAddress = $address . " " . $postalCode . " " . $city;
+        $coordinates = $this->photonApi->transformAddressToCoordinate($fullAddress);
         $user->setLatitude($coordinates[1]);
         $user->setLongitude($coordinates[0]);
         $this->entityManager->persist($user);

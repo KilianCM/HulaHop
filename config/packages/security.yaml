@@ -36,6 +36,8 @@ security:
     access_control:
         - { path: ^/borrows, roles: ROLE_USER }
         - { path: ^/locate, roles: ROLE_USER }
+        - { path: ^/friends, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

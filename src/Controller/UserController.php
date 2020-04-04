@@ -52,22 +52,17 @@ class UserController extends AbstractController
      * @Route("/friends", name="user_friends")
      * @return Response
      */
-    public function friendsList(){
-        return $this->render('user/friendsList.html.twig', [
-            'user' => $this->getUser()
-        ]);
+    public function userFriends(){
+        return $this->render('user/friends.html.twig');
     }
 
     /**
-     * @Route("/friends/{id}", name="friend_profile")
-     * @param $id
-     * @param UserRepository $userRepository
+     * @Route("/friends/{user}", name="friend_profile")
+     * @param User $user
      * @return Response
      */
-    public function friendProfile($id, UserRepository $userRepository){
-        $user = $userRepository->find($id);
-
-        return $this->render('user/friendProfile.html.twig', [
+    public function friendProfile(User $user){
+        return $this->render('user/friend_profile.html.twig', [
             'user' => $user
         ]);
     }

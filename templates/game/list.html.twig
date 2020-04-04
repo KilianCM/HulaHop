@@ -11,9 +11,11 @@
                 <div class="img"><a href="{{ path("description_game", { 'id' : game.id }) }}"><img src="{{ game.imageUrl }}" alt=""></a></div>
                 <a href="{{ path("description_game", { 'id' : game.id }) }}" class="title"><h2>{{ game.name }}</h2></a>
                 <div class="category">{{ game.category.name }}</div>
+                {% if app.user %}
                 <div class="borrow">
                     <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
                 </div>
+                {% endif %}
                 <style>
                     .game-{{ loop.index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ loop.index }}s;animation-fill-mode: forwards;}
                 </style>

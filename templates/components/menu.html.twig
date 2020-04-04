@@ -30,23 +30,27 @@
                 <a href="{{ path('showcase_page') }}">Liste des jeux <span></span></a>
             </div>
         </div>
-        <div class="nav-item">
-            <div class="btn btn-primary {% if currentPath == path('user_borrows') %} active{% endif %}">
-                <a href="{{ path('user_borrows') }}">Mes jeux <span></span></a>
+        {% if app.user %}
+            <div class="nav-item">
+                <div class="btn btn-primary {% if currentPath == path('user_borrows') %} active{% endif %}">
+                    <a href="{{ path('user_borrows') }}">Mes jeux <span></span></a>
+                </div>
             </div>
-        </div>
-        <div class="nav-item">
-            <div class="btn btn-primary {% if currentPath == path('user_friends') %} active{% endif %}">
-                <a href="{{ path('user_friends') }}">Mes amis <span></span></a>
+            <div class="nav-item">
+                <div class="btn btn-primary {% if currentPath == path('user_friends') %} active{% endif %}">
+                    <a href="{{ path('user_friends') }}">Mes amis <span></span></a>
+                </div>
             </div>
-        </div>
+        {% endif %}
         <div class="nav-item">
             <div class="btn btn-primary {% if currentPath == path('locate_gamers') %} active{% endif %}">
                 <a href="{{ path('locate_gamers') }}">Trouver des joueurs <span></span></a>
             </div>
         </div>
         <div class="nav-item">
-            <div class="btn btn-primary">Bonnes affaires <span></span></div>
+            <div class="btn btn-primary {% if currentPath == path('deals_page') %} active{% endif %}">
+                <a href="{{ path('deals_page') }}">Bonnes affaires <span></span></a>
+            </div>
         </div>
     </div>
     {% if app.user %}
@@ -61,6 +65,5 @@
             <a href="{{ path('app_login') }}">Se connecter</a>
         </div>
     {% endif %}
-
-
+    {% include 'components/footer.html.twig' %}
 </div>

@@ -1,0 +1,10 @@
+<h1>Mes amis</h1>
+
+{% for user in app.user.friends %}
+    <img src="{{ user.imageUrl }}" height="50" alt="">
+    <a href="{{ path('friend_profile', { 'user' : user.id }) }}">
+        <h2>{{ user.name }}</h2>
+    </a>
+{% else %}
+    <p>Tu n'as pas encore d'amis. Rends toi <a href="{{ path("locate_gamers") }}">sur cette page</a> pour en trouver proche de chez toi !</p>
+{% endfor %}

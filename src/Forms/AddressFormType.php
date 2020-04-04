@@ -18,17 +18,13 @@ class AddressFormType extends AbstractType
     {
         $builder
             ->add("address", null, [
-                "label" => "Ton adresse",
+                "label" => "Rue",
             ])
-
-            ->add("city", null, [
-                "label" => "Ta ville",
-            ])
-
             ->add("postalCode", null, [
-                "label" => "Ton code postal"
-
+                "label" => "Code postal"
+            ])
+            ->add("city", null, [
+                "label" => "Ville",
             ]);
-
     }
 }

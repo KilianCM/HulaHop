@@ -4,17 +4,17 @@
 
 {% block body %}
 
-    <h1>{{ user.name }}</h1>
-    <img src="{{ user.imageUrl }}" width="300" alt="">
+    <h1>{{ app.user.name }}</h1>
+    <img src="{{ app.user.imageUrl }}" width="300" alt="">
 
     <h2>Email</h2>
-    <p>{{ user.email }}</p>
+    <p>{{ app.user.email }}</p>
 
     <h2>Adresse</h2>
-    <p>{{ user.address }}</p>
+    <p>{{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
 
     <h2>Liste d'amis</h2>
-    {% for user in user.friends %}
+    {% for user in app.user.friends %}
     <p>{{ user.imageUrl }}{{ user.name }}</p>
 
     {% endfor %}
@@ -22,7 +22,7 @@
     <div class="content borrow-list-page">
     <h2 class="title">Mes jeux</h2>
     <div class="games-container">
-        {% for borrow in user.borrows %}
+        {% for borrow in app.user.borrows %}
             <div class="game game-{{ loop.index }}">
                 <div class="img"><a href="{{ path("description_game", { 'id' : borrow.game.id }) }}"><img src="{{ borrow.game.imageUrl }}" alt=""></a></div>
                 <a href="{{ path("description_game", { 'id' : borrow.game.id }) }}" class="title"><h2>{{ borrow.game.name }}</h2></a>

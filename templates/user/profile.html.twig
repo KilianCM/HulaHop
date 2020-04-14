@@ -22,7 +22,7 @@
     <div class="content borrow-list-page">
     <h2 class="title">Mes jeux</h2>
     <div class="games-container">
-        {% include "components/borrowed_games.html.twig" with {'borrows': app.user.borrows } %}
+        {% include "components/borrowed_games_list.html.twig" with {'borrows': app.user.borrows } %}
     </div>
     <a href="#" class="btn">Editer son profil</a>
 

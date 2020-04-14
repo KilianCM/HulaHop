@@ -48,7 +48,7 @@ class BorrowController extends AbstractController
      */
     public function userBorrows() {
         return $this->render('borrows/index.html.twig', [
-            'borrows' => $this->getUser()->getBorrows(),
+            'borrows' => $this->getUser()->getBorrows()
         ]);
     }
 }

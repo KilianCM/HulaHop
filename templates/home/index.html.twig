@@ -10,13 +10,17 @@
             <h1>Bonjour <span>{{app.user.name}}</span>,</h1>
         {% endif %}
         <p>
-            HulaHop est une ludothèque en ligne qui propose une série de jeu de société à emprunter. <br>
+            HulaHop est une ludothèque située à Annecy qui vous propose une gamme de jeux de société à emprunter. <br>
+            Pour cela, il y a rien de plus simple : demander à emprunter un jeu disponible pour une durée de 30 jours et vous le recevrez directement par la Poste ! <br>
             Partagez de bon moments en famille ou entre amis autour d'une gamme de jeu pour tout âge et de toutes catégories.
         </p>
-        <p>
-            Vous voulez être au courant de bonnes affaires ? Vous souhaitez trouver vos amis HulaHopien ? <br>
-        </p>
-        {% if not app.user %}
+        <p>Vous souhaitez trouver vos amis HulaHopien ?</p>
+        <a href="{{ path('locate_gamers') }}">HulaHop permet de vous mettre en relation avec d'autres joueurs proches de chez vous !</a>
+
+        <p>Vous voulez être au courant de bonnes affaires ?</p>
+        <a href="{{ path('deals_page') }}"> Le site de HulaHop vous permet de retrouver les meilleures offres de jeux à vendre à petits prix !</a>
+
+            {% if not app.user %}
         <div class="logs">
             <div class="log-btn signup">
                 <a href="{{ path('app_register') }}">S'inscrire</a>

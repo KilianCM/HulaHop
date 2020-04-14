@@ -45,8 +45,7 @@ class MailerManager
             ->from(new Address($email))
             ->to(new Address($this->hulaHopAddress))
             ->subject($subject)
-            ->text($message)
-    ->setBody();
+            ->text($message);
 
         $this->mailer->send($email);
     }

@@ -1,0 +1,21 @@
+{% extends "emails/base.html.twig" %}
+{% block body %}
+    <div>
+        <h1 style="color: #222831;">Retour de jeu demandé</h1>
+        <p>
+            Vous avez demandé un retour pour le jeu suivant :
+            <span style="color: #00adb5">{{ game.name }}</span>
+        </p>
+        <h3 style="color: #222831;">Etapes à suivre</h3>
+        <ul>
+            <li>Imprimez l'étiquette Colissimo jointe à ce mail</li>
+            <li>Emballez le jeu dans un carton de bonne dimension en prenant soin de caler le jeu</li>
+            <li>Collez l'étiquette sur le carton sans cacher les code-barres</li>
+            <li>Déposez le colis en bureau de Poste ou dans votre boîte aux lettres <span style="font-weight: bold">avant le {{ return_limit_date|date("d/m/Y") }}</span>.
+                Le tampon de la Poste fait foi de la date d'envoi.
+            </li>
+        </ul>
+
+        <p>En espérant que le jeu vous a plu !</p>
+    </div>
+{% endblock body %}

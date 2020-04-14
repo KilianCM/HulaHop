@@ -38,7 +38,7 @@ class BorrowController extends AbstractController
         $entityManager->persist($game);
         $entityManager->flush();
         $mailerManager->sendReturnGameMail($borrow);
-        return new RedirectResponse("/");
+        return new RedirectResponse("/borrows");
     }
 
     /**

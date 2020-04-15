@@ -33,7 +33,23 @@ class MailerManager
             // fictive colissimo label
             ->attachFromPath($this->parameterBag->get('kernel.project_dir') . "/public/colissimo-sample.pdf")
             ->context([
-                'return_limit_date' => new \DateTime('+7 days'),
+                'returnLimitDate' => new \DateTime('+7 days'),
+                'game' => $borrow->getGame(),
+            ]);
+
+        $this->mailer->send($email);
+    }
+
+    public function sendBorrowGameMail(Borrow $borrow)
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->hulaHopAddress))
+            ->to(new Address($borrow->getUser()))
+            ->subject("Confirmation d'emprunt")
+            ->htmlTemplate('emails/borrow_game.html.twig')
+            ->context([
+                'endBorrow' => new \DateTime('+35 days'),
+                'deliveryEstimatedDate' => new \DateTime('+5 days'),
                 'game' => $borrow->getGame(),
             ]);
 

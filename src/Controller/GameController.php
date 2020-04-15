@@ -16,24 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
 {
-
-    /**
-     * @Route("game/add/{id}", name="borrow_game")
-     * @param Game $game
-     * @param EntityManagerInterface $entityManager
-     * @return RedirectResponse
-     */
-    public function borrowGame(Game $game, EntityManagerInterface $entityManager) {
-        $borrow = new Borrow();
-        $borrow->setUser($this->getUser());
-        $borrow->setGame($game);
-        $entityManager->persist($borrow);
-        $game->setIsBorrowed(true);
-        $entityManager->flush();
-
-        return new RedirectResponse("/");
-    }
-
     /**
      * @Route("game/description/{id}", name="description_game")
      * @param GameRepository $gameRepository

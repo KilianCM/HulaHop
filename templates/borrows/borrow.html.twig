@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunter un jeu{% endblock %}
+
+{% block body %}
+    <div class="content borrow-list-page">
+        <h1 class="title">Emprunter un jeu</h1>
+        <div class="game">
+            <img src="{{ game.imageUrl }}" alt="" width="200">
+            <h2>{{ game.name }}</h2>
+        </div>
+
+        <p>Pour la somme de <span>5€</span>, vous pourrez profiter de {{ game.name }} jusqu'au {{ endBorrow|date("d/m/Y") }}</p>
+        <p>Avant la fin du prêt, un mail vous sera envoyé avec une étiquette de retour à coller sur un carton. Pensez à garder le carton à la réception pour éviter de chercher un carton au moment du renvoi.</p>
+
+        <h4>Et si le jeu ne me plait pas ?</h4>
+        <p>Vous pourrez renvoyer le jeu à tout moment en vous rendant sur la page <a href="{{ path("user_borrows") }}">Mes Jeux</a>.</p>
+
+        <h2>Adresse de livraison et de facturation</h2>
+        <p>{{ app.user.address }}</p>
+        <p>{{ app.user.postalCode }} {{ app.user.city }}</p>
+
+        <p>Date de livraison estimée : <span>{{ deliveryEstimatedDate|date("d/m/Y") }}</span></p>
+
+        {{ form_start(form) }}
+        {{ form_row(form.agreeTerms) }}
+        <button class="btn">Emprunter le jeu et payer 5€</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

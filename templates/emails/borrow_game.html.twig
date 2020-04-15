@@ -1,0 +1,19 @@
+{% extends "emails/base.html.twig" %}
+{% block body %}
+    <div>
+        <h1 style="color: #222831;">Jeu emprunté</h1>
+        <p>
+            Vous avez emprunté le jeu suivant jusqu'au {{ endBorrow|date("d/m/Y") }}:
+            <span style="color: #00adb5">{{ game.name }}</span>
+        </p>
+        <h3 style="color: #222831;">Adresse de livraison</h3>
+        <p>{{ app.user.address }}</p>
+        <p>{{ app.user.postalCode }} {{ app.user.city }}</p>
+
+        <p>Date de livraison estimée :
+            <span style="color:#00adb5; font-weight: bold">{{ deliveryEstimatedDate|date("d/m/Y") }}</span>
+        </p>
+
+        <p>Bon jeu !</p>
+    </div>
+{% endblock body %}

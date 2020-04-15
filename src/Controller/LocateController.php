@@ -34,8 +34,6 @@ class LocateController extends AbstractController
             $postalCode = $form->get("postalCode")->getData();
             $manager->addAddress($this->getUser(), $address, $city, $postalCode);
 
-
-
             return new RedirectResponse("/locate");
         }
 

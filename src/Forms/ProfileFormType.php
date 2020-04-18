@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use function Sodium\add;
 
 class ProfileFormType extends AbstractType
 {
@@ -16,18 +17,30 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add("email", EmailType::class, [
-                'label' => 'Ton adresse mail'
+                'label' => 'Email : '
             ])
 
             ->add("name", null,[
-                'label' => 'Ton pseudo'
+                'label' => 'Pseudo : '
             ])
+
             ->add("address", null, [
-                'label' => 'Ton adresse'
+                'label' => 'Adresse : '
             ])
+
+            ->add("city", null, [
+                'label' => 'Ville : '
+            ])
+
+            ->add("postalCode", null, [
+                'label' => "Code postal : "
+            ])
+
             ->add("imageUrl", null, [
-                'label' => 'Ton image'
+                'label' => 'Image du compte : '
             ]);
+
+
 
     }
 

@@ -10,6 +10,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -81,6 +82,8 @@ class UserController extends AbstractController
         $user->getEmail();
         $user->getName();
         $user->getAddress();
+        $user->getCity();
+        $user->getPostalCode();
         $user->getImageUrl();
 
         $form = $this->createForm(ProfileFormType::class, $user);
@@ -90,9 +93,12 @@ class UserController extends AbstractController
             $user->setEmail($form->get("email")->getData());
             $user->setName($form->get("name")->getData());
             $user->setAddress($form->get("address")->getData());
+            $user->setCity($form->get("city")->getData());
+            $user->setPostalCode($form->get("postalCode")->getData());
             $user->setImageUrl($form->get("imageUrl")->getData());
             $entityManager->persist($this->getUser());
             $entityManager->flush();
+            return new RedirectResponse("/profile");
         }
 
         return $this->render('user/edit_profile.html.twig', [

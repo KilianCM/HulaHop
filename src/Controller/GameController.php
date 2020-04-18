@@ -4,14 +4,10 @@
 namespace App\Controller;
 
 
-use App\Entity\Borrow;
-use App\Entity\Game;
 use App\Repository\GameRepository;
 use App\Services\BoardGamesApi;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController

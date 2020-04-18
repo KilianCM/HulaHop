@@ -21,7 +21,8 @@ class ContactFormType extends AbstractType
                 'label' => 'Le sujet du message'
             ])
             ->add("message", TextareaType::class, [
-                'label' => 'Message'
+                'label' => 'Message',
+                'attr' => ['rows' => '10']
             ]);
     }
 }

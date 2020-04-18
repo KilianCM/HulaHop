@@ -1,0 +1,41 @@
+.locate-page {
+    width: 100%;
+
+    #map {
+        margin: 20px 30px 0 0;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+
+        @include mobile {
+            margin: 30px -10px 0 -10px;
+        }
+    }
+}
+
+.map-popup {
+    h4 {
+        color: $blue;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 5px;
+        background-color: $blue;
+        color: white;
+        border: none;
+        border-radius: 2px;
+        transition: background-color ease-in-out 0.3s;
+
+        &:hover {
+            background-color: $blue-hover;
+            cursor: pointer;
+        }
+
+        @include mobile {
+            font-size: 16px;
+            padding: 6px;
+        }
+    }
+}

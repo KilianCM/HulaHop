@@ -57,11 +57,14 @@ h1{
   font-style: italic;
 }
 .site-content {
+  width: 100%;
+
   @include not-mobile{
     padding-left: 270px;
     padding-top: 20px;
   }
   @include mobile{
+    padding: 10px;
     padding-top: 70px;
   }
   &.burger-click{

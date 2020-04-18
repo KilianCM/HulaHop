@@ -25,7 +25,7 @@ class OpenStreetMap {
     }
 
     addMarkerAndZoom(user, popupContent) {
-        this.addMarker(user,'#00adb5', popupContent);
+        this.addMarker(user,'#E75A5F', popupContent);
         this.map.setView(new L.LatLng(user.latitude, user.longitude), 12);
     }
 

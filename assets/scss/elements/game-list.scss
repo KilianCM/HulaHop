@@ -8,11 +8,11 @@
     .game{
         padding: 20px;
         margin: 15px 2%;
-        box-shadow: 0 3px 9px rgba(0,0,0,0.12);
+        box-shadow: $box-shadow;
         width: 25%;
         min-width: 220px;
         margin-bottom: 30px;
-        background-color:$white;
+        background-color: white;
         border-radius: 5px;
 
         @include mobile{

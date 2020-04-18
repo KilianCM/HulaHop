@@ -3,23 +3,25 @@
 {% block title %} Trouver des joueurs {% endblock %}
 
 {% block body %}
-    <h1>Trouve des joueurs proche de toi !</h1>
+    <div class="locate-page">
+        <h1>Trouve des joueurs proche de toi !</h1>
 
-    {% if app.user.latitude and app.user.longitude %}
-        <div id="map"></div>
-    {% else %}
-        <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>
-        <div>
-            {{ form_start(addressForm) }}
+        {% if app.user.latitude and app.user.longitude %}
+            <div id="map"></div>
+        {% else %}
+            <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>
+            <div>
+                {{ form_start(addressForm) }}
 
-            {{ form_row(addressForm.address) }}
-            {{ form_row(addressForm.postalCode) }}
-            {{ form_row(addressForm.city) }}
-            <button class="btn">OK</button>
-            {{ form_end(addressForm) }}
-        </div>
-        <p>Promis on l'utilise que pour la carte !</p>
-    {% endif %}
+                {{ form_row(addressForm.address) }}
+                {{ form_row(addressForm.postalCode) }}
+                {{ form_row(addressForm.city) }}
+                <button class="btn">OK</button>
+                {{ form_end(addressForm) }}
+            </div>
+            <p>Promis on l'utilise que pour la carte !</p>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}

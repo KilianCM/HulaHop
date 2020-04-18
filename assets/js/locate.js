@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             const response = JSON.parse(xhr.response);
             map.addMarkerAndZoom(JSON.parse(response["currentUser"]));
             response["otherUsers"].forEach(user => {
-                map.addMarker(user, "#E75A5F", createUserPopupContent(user))
+                map.addMarker(user, "#00adb5", createUserPopupContent(user))
             })
         }
     };
@@ -34,6 +34,7 @@ function createUserPopupContent(user) {
         }
     });
     const div = document.createElement("div");
+    div.classList.add("map-popup");
     div.appendChild(title);
     div.appendChild(button);
     return div

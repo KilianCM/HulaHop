@@ -153,8 +153,8 @@
     }
 
     .hamburger .line {
-      width: 50px;
-      height: 5px;
+      width: 30px;
+      height: 3px;
       background-color: #ecf0f1;
       display: block;
       margin: 8px auto;
@@ -174,17 +174,17 @@
     }
 
     #hamburger-1.is-active .line:nth-child(1) {
-      -webkit-transform: translateY(13px) rotate(45deg);
-      -ms-transform: translateY(13px) rotate(45deg);
-      -o-transform: translateY(13px) rotate(45deg);
-      transform: translateY(13px) rotate(45deg);
+      -webkit-transform: translateY(11px) rotate(45deg);
+      -ms-transform: translateY(11px) rotate(45deg);
+      -o-transform: translateY(11px) rotate(45deg);
+      transform: translateY(11px) rotate(45deg);
     }
 
     #hamburger-1.is-active .line:nth-child(3) {
-      -webkit-transform: translateY(-13px) rotate(-45deg);
-      -ms-transform: translateY(-13px) rotate(-45deg);
-      -o-transform: translateY(-13px) rotate(-45deg);
-      transform: translateY(-13px) rotate(-45deg);
+      -webkit-transform: translateY(-11px) rotate(-45deg);
+      -ms-transform: translateY(-11px) rotate(-45deg);
+      -o-transform: translateY(-11px) rotate(-45deg);
+      transform: translateY(-11px) rotate(-45deg);
     }
   }
   .log-btn{

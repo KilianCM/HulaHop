@@ -3,10 +3,15 @@
     padding: 0 20px;
     display: flex;
     height: calc(100vh - 70px);
-    width: calc(100vw - 40px);
+    width: calc(100vw - 310px);
     flex-direction: column;
     text-align: center;
     justify-content: center;
+
+    @include mobile {
+      width: calc(100vw - 40px);
+      height: unset;
+    }
 
     h1 {
       opacity: 0;
@@ -16,7 +21,7 @@
     }
 
     span{
-      color: $lightgray;
+      color: $blue;
     }
 
     p {
@@ -73,6 +78,47 @@
             &:hover{
               background-color: $blue-hover;
             }
+          }
+        }
+      }
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-evenly;
+
+      @include mobile {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .home-feature {
+        background-color: rgba(255,255,255,0.5);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 200px;
+
+        @include tablet {
+          max-width: 180px;
+        }
+
+        @include mobile {
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-weight: bold;
+          min-height: 50px;
+        }
+
+        a {
+          color: $blue;
+          font-style: normal;
+          text-decoration: none;
+          transition: color ease-in-out 0.3s;
+
+          &:hover {
+            color: $blue-hover;
           }
         }
       }

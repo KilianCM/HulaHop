@@ -1,0 +1,29 @@
+footer {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @include not-mobile {
+        margin-left: -10px;
+    }
+
+    h4 {
+        margin-bottom: 5px;
+        a {
+            transition: color ease-in-out 0.3s;
+        }
+        &:not(.copyright) {
+            a:hover {
+                color: $red-hover!important;
+            }
+        }
+    }
+
+    .copyright {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}

@@ -4,17 +4,13 @@
 
 {% block body %}
     <h1>Bonnes affaires du moment</h1>
-
+    <p>Profite de <span>{{ games|length }}</span> jeux à des prix bas en ce moment !</p>
+    <div class="games-container">
     {% for game in games %}
-        <div>
-            <img src="{{ game.images.small }}" alt="{{ game.name }}">
-            <a href="{{ game.url }}">{{ game.name }}</a>
-            <p>{{ game.price }}€</p>
-            <p>-{{ game.discount * 100 }}%</p>
-            <p>Ancien prix : {{ game.msrp }}€</p>
-        </div>
+        {% include "components/game_deal.html.twig" with { 'game': game, 'index': loop.index } %}
         {% else %}
         <p>Malheureusement, il n'y a pas de bonnes affaires en ce moment.</p>
     {% endfor %}
+    </div>
 
 {% endblock %}

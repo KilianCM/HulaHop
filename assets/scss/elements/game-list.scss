@@ -1,0 +1,118 @@
+.games-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    justify-content: flex-start;
+    margin: 0 auto;
+
+    .game{
+        padding: 20px;
+        margin: 15px 2%;
+        box-shadow: 0 3px 9px rgba(0,0,0,0.12);
+        width: 25%;
+        min-width: 220px;
+        margin-bottom: 30px;
+        background-color:$white;
+        border-radius: 5px;
+
+        @include mobile{
+            width: 100%;
+            min-width: 100px;
+            margin: 10px 5%;
+        }
+
+        .img{
+            margin-bottom: 10px;
+            img{
+                display: block;
+                max-height: 150px;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            cursor: pointer;
+            text-decoration: none;
+
+            .discount {
+                background-color: $green;
+                padding: 3px;
+                border-radius: 2px;
+                color: white;
+                font-weight: bold;
+            }
+
+            h2{
+                text-decoration: none;
+                font-weight: bold;
+                color: $blue;
+                transition: color ease-in-out 0.3s;
+
+                &:hover {
+                    color: $blue-hover;
+                }
+            }
+        }
+
+        .prices {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .last-price {
+                text-decoration: line-through;
+                font-size: 12px;
+                color: $red;
+                margin-right: 5px;
+            }
+
+            .new-price {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+        }
+
+        .category{
+        }
+        .borrow{
+            display: flex;
+            justify-content: flex-end;
+
+            a{
+                padding: 10px 20px;
+                text-decoration: none;
+                color:$white;
+                font-weight: bold;
+                transition: .3s;
+                background-color: $blue;
+                border-radius: 5px;
+                box-shadow: 0px 0px 3px gray;
+                &:hover{
+                    box-shadow: 0px 0px 0px gray;
+                }
+            }
+
+            @include mobile{
+                margin-top: 15px;
+                justify-content: center;
+
+                a{
+                    width:100%;
+                    text-align: center;
+                    box-shadow: 0px 0px 5px gray;
+                    &:hover{
+                        box-shadow: 0px 0px 0px black;
+                    }
+                }
+            }
+        }
+    }
+}
+

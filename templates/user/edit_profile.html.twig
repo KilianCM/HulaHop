@@ -3,14 +3,19 @@
 {% block title %}{{ user.name }}{% endblock %}
 {% block body %}
     <h1>Edite ton profil {{ user.name }} !</h1>
-    {{ form_start(editProfileForm) }}
+    <div class="registration-page">
+        {{ form_start(editProfileForm) }}
+        {{ form_row(editProfileForm.email) }}
+        {{ form_row(editProfileForm.name) }}
+        {{ form_row(editProfileForm.address) }}
+        {{ form_row(editProfileForm.city) }}
+        {{ form_row(editProfileForm.postalCode) }}
+        <button class="btn">Editer le profil</button>
 
-    {{ form_row(editProfileForm.email) }}
-    {{ form_row(editProfileForm.name) }}
-    {{ form_row(editProfileForm.address) }}
-    {{ form_row(editProfileForm.city) }}
-    {{ form_row(editProfileForm.postalCode) }}
-    {{ form_row(editProfileForm.imageUrl) }}
-    <button class="btn">Editer</button>
-    {{ form_end(editProfileForm) }}
+        {{ form_end(editProfileForm) }}
+
+    </div>
+
+
+
 {% endblock %}

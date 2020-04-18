@@ -34,11 +34,9 @@ class ProfileFormType extends AbstractType
 
             ->add("postalCode", null, [
                 'label' => "Code postal : "
-            ])
-
-            ->add("imageUrl", null, [
-                'label' => 'Image du compte : '
             ]);
+
+
 
 
 

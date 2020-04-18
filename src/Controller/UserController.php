@@ -79,12 +79,6 @@ class UserController extends AbstractController
      */
     public function editProfile($id, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository){
         $user = $userRepository->find($id);
-        $user->getEmail();
-        $user->getName();
-        $user->getAddress();
-        $user->getCity();
-        $user->getPostalCode();
-        $user->getImageUrl();
 
         $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);
@@ -95,7 +89,6 @@ class UserController extends AbstractController
             $user->setAddress($form->get("address")->getData());
             $user->setCity($form->get("city")->getData());
             $user->setPostalCode($form->get("postalCode")->getData());
-            $user->setImageUrl($form->get("imageUrl")->getData());
             $entityManager->persist($this->getUser());
             $entityManager->flush();
             return new RedirectResponse("/profile");

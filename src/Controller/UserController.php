@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Forms\ProfileFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -67,8 +68,37 @@ class UserController extends AbstractController
         ]);
     }
 
-    public function editProfile($id, UserRepository $userRepository){
-        $users = $userRepository->find($id);
+    /**
+     * @Route("/profile/edit/{id}", name="edit_profile")
+     * @param $id
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function editProfile($id, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository){
+        $user = $userRepository->find($id);
+        $user->getEmail();
+        $user->getName();
+        $user->getAddress();
+        $user->getImageUrl();
+
+        $form = $this->createForm(ProfileFormType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $user->setEmail($form->get("email")->getData());
+            $user->setName($form->get("name")->getData());
+            $user->setAddress($form->get("address")->getData());
+            $user->setImageUrl($form->get("imageUrl")->getData());
+            $entityManager->persist($this->getUser());
+            $entityManager->flush();
+        }
+
+        return $this->render('user/edit_profile.html.twig', [
+            'user' => $user,
+            'editProfileForm' => $form->createView()
+        ]);
     }
 
 

@@ -24,6 +24,6 @@
     <div class="games-container">
         {% include "components/borrowed_games_list.html.twig" with {'borrows': app.user.borrows } %}
     </div>
-    <a href="#" class="btn">Editer son profil</a>
+    <a href="{{ path("edit_profile", { 'id' : user.id }) }}" class="btn">Editer son profil</a>
 
 {% endblock %}

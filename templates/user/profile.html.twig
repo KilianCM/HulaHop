@@ -24,7 +24,7 @@
         {% include "components/friends_list.html.twig" %}
 
         <div class="content borrow-list-page">
-            <h2 class="title">Mes jeux</h2>
+            <h2 class="title">Liste de jeux</h2>
             <div class="games-container">
                 {% for borrow in app.user.borrows %}
                     {% include "components/game.html.twig" with { 'borrow': borrow, 'game': borrow.game, 'index': loop.index } %}

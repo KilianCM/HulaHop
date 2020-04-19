@@ -5,6 +5,8 @@
 {% block body %}
     <div class="content game-list-page">
         <h1>Liste des jeux disponibles</h1>
+        <p>Tu peux retrouver ici tous les jeux disponibles à l'emprunt mis à disposition par HulaHop.</p>
+        <p class="info-price">Chez HulaHop, c'est tarif unique : <span>5€ pour 30 jours</span> d'emprunt, livraison comprise.</p>
         <div class="games-container">
            {% for game in games %}
                 {% include "components/game.html.twig" with { 'borrow': null, 'game': game, 'index': loop.index } %}

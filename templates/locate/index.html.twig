@@ -7,6 +7,8 @@
         <h1>Trouve des joueurs proche de toi !</h1>
 
         {% if app.user.latitude and app.user.longitude %}
+            <p>Ici tu peux retrouver des joueurs HulaHopien proche de chez toi.</p>
+            <p>Ajoute les en amis pour découvrir leurs jeux et organiser des parties ensemble !</p>
             <div id="map"></div>
         {% else %}
             <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>

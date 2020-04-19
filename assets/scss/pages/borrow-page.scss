@@ -1,0 +1,94 @@
+.borrow-page {
+    width: 100%;
+
+    .info-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        .price {
+            span {
+                font-style: normal;
+                font-size: 40px;
+                color: $blue;
+                font-weight: bold;
+            }
+            font-style: italic;
+            margin-right: 30px;
+        }
+
+        .game {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 200px;
+                max-height: 200px;
+                object-fit: cover;
+                margin-right: 30px;
+                border-radius: 10px;
+                box-shadow: $box-shadow;
+
+                @include mobile {
+                    width: 120px;
+                    margin-right: 10px;
+                }
+            }
+
+            h2 {
+                font-size: 30px;
+                font-weight: bold;
+                color: $blue;
+            }
+        }
+    }
+
+    h4 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .date {
+        font-style: italic;
+        margin-top: 10px;
+        margin-bottom: 30px;
+
+        span {
+            font-style: normal;
+            color: $blue;
+            font-weight: bold;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: $blue;
+        transition: color ease-in-out 0.3s;
+
+        &:hover {
+            color: $blue-hover;
+        }
+    }
+
+    .btn {
+        max-width: 300px;
+
+        @include mobile {
+            margin: 0 auto;
+        }
+    }
+
+    .terms {
+        @include mobile {
+            text-align: center;
+        }
+
+        input {
+            margin: 10px;
+        }
+    }
+
+}

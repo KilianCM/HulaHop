@@ -21,10 +21,7 @@
         <p>{{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
 
         <h2>Liste d'amis</h2>
-        {% for user in app.user.friends %}
-            <p>{{ user.imageUrl }}{{ user.name }}</p>
-
-        {% endfor %}
+        {% include "components/friends_list.html.twig" %}
 
         <div class="content borrow-list-page">
             <h2 class="title">Mes jeux</h2>

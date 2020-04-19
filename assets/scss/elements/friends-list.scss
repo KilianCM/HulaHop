@@ -1,0 +1,35 @@
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    justify-content: flex-start;
+    margin: 0 auto;
+
+    a {
+        text-decoration: none;
+    }
+
+    .friend {
+        width: 150px;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+        text-align: center;
+        h2 {
+            color: $blue;
+            font-size: 20px;
+            margin-bottom: 10px;
+            transition: color ease-in-out 0.3s;
+
+            &:hover {
+                color: $blue-hover;
+            }
+        }
+
+        p {
+            color: black;
+            transition: color ease-in-out 0.3s;
+        }
+    }
+}

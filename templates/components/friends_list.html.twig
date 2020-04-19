@@ -1,10 +1,16 @@
 <h1>Mes amis</h1>
 
-{% for user in app.user.friends %}
-    <img src="{{ user.imageUrl }}" height="50" alt="">
+<div class="friends-list">
+    {% for user in app.user.friends %}
     <a href="{{ path('friend_profile', { 'user' : user.id }) }}">
-        <h2>{{ user.name }}</h2>
+        <div class="friend">
+            {#        <img src="{{ user.imageUrl }}" height="50" alt="">#}
+            <h2>{{ user.name }}</h2>
+            <p><span>{{ user.borrows|length }}</span> jeux empruntés</p>
+        </div>
     </a>
-{% else %}
-    <p>Tu n'as pas encore d'amis. Rends toi <a href="{{ path("locate_gamers") }}">sur cette page</a> pour en trouver proche de chez toi !</p>
-{% endfor %}
+
+    {% else %}
+        <p>Tu n'as pas encore d'amis. Rends toi <a href="{{ path("locate_gamers") }}">sur cette page</a> pour en trouver proche de chez toi !</p>
+    {% endfor %}
+</div>

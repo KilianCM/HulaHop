@@ -1,4 +1,5 @@
 .profile-page {
+
     .header {
         display: flex;
         justify-content: space-between;
@@ -55,10 +56,20 @@
         font-size: 16px;
         font-weight: bold;
         margin-bottom: 5px;
-        color: $blue-hover;
+        color: $blue;
     }
 
     p {
         margin-bottom: 10px;
+    }
+
+    .user-mail {
+        color: $blue;
+        text-decoration: none;
+        transition: color ease-in-out 0.3s;
+
+        &:hover {
+            color: $blue-hover;
+        }
     }
 }

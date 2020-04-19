@@ -1,0 +1,5 @@
+{% for game in games %}
+    {% include "components/game.html.twig" with { 'borrow': borrow, 'game': game, 'index': loop.index, 'borrowMode': true, 'listMode': false} %}
+{% else %}
+    <p>{{ noContent }}</p>
+{% endfor %}

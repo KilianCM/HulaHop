@@ -22,8 +22,12 @@
     <div class="content borrow-list-page">
     <h2 class="title">Mes jeux</h2>
     <div class="games-container">
-        {% include "components/borrowed_games_list.html.twig" with {'borrows': app.user.borrows } %}
+        {% for borrow in app.user.borrows %}
+            {% include "components/game.html.twig" with { 'borrow': borrow, 'game': borrow.game, 'index': loop.index } %}
+        {% else %}
+            <p>Aucun emprunt en cours.</p>
+        {% endfor %}
     </div>
-    <a href="{{ path("edit_profile", { 'id' : user.id }) }}" class="btn">Editer son profil</a>
+    <a href="{{ path("edit_profile") }}" class="btn">Editer son profil</a>
 
 {% endblock %}

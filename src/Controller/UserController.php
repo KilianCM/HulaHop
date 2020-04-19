@@ -70,15 +70,13 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit/{id}", name="edit_profile")
-     * @param $id
+     * @Route("/profile/edit", name="edit_profile")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
-     * @param UserRepository $userRepository
      * @return Response
      */
-    public function editProfile($id, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository){
-        $user = $userRepository->find($id);
+    public function editProfile(Request $request, EntityManagerInterface $entityManager){
+        $user = $this->getUser();
 
         $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);

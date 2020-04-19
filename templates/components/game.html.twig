@@ -1,0 +1,23 @@
+<div class="game game-{{ index }}">
+    <div class="img"><a href="{{ path("description_game", { 'id' : game.id }) }}"><img src="{{ game.imageUrl }}" alt=""></a></div>
+    <div class="title-container">
+        <a href="{{ path("description_game", { 'id' : game.id }) }}" class="title"><h2>{{ game.name }}</h2></a>
+        <div class="category">{{ game.category.name }}</div>
+    </div>
+    {% if borrow and not borrow.isReturned %}
+        <p class="end-date">À rendre avant le <span>{{ borrow.createdAt|date_modify("+35 day")|date("d/m/Y") }}</span></p>
+    {% endif %}
+    <div class="borrow">
+        {% if borrow and not borrow.isReturned %}
+            <a href="{{ path("return_game", { 'id' : borrow.id }) }}" class="btn">Rendre ce jeu</a>
+        {% elseif borrow %}
+            <p>Jeu rendu</p>
+        {% endif %}
+        {% if not borrow %}
+            <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
+        {% endif %}
+    </div>
+    <style>
+        .game-{{ index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ index }}s;animation-fill-mode: forwards;}
+    </style>
+</div>

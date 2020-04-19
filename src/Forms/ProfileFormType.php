@@ -19,27 +19,18 @@ class ProfileFormType extends AbstractType
             ->add("email", EmailType::class, [
                 'label' => 'Email : '
             ])
-
             ->add("name", null,[
                 'label' => 'Pseudo : '
             ])
-
             ->add("address", null, [
                 'label' => 'Adresse : '
             ])
-
-            ->add("city", null, [
-                'label' => 'Ville : '
-            ])
-
             ->add("postalCode", null, [
                 'label' => "Code postal : "
+            ])
+            ->add("city", null, [
+                'label' => 'Ville : '
             ]);
-
-
-
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

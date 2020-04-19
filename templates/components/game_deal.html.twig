@@ -1,9 +1,9 @@
 <div class="game game-{{ index }}">
     <div class="img"><a href="{{ game.url }}"><img src="{{ game.images.medium }}" alt=""></a></div>
-    <a href="{{  game.url }}" class="title">
-        <h2>{{ game.name }}</h2>
+    <div class="title-container">
+        <a href="{{  game.url }}" class="title"><h2>{{ game.name }}</h2></a>
         <span class="discount">-{{ game.discount * 100 }}%</span>
-    </a>
+    </div>
     <div class="prices">
         <p class="last-price">{{ game.msrp }}€</p>
         <p class="new-price">{{ game.price }}€</p>

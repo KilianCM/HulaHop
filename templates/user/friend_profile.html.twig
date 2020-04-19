@@ -6,9 +6,13 @@
 
     <h1>{{ user.name }}</h1>
     <img src="{{ user.imageUrl }}" height="100" alt="">
-    <h2>Lieu</h2>
-    {% if user.address %}
-        {{ user.address }}
+
+    <h2>Contact</h2>
+    <a class="user-mail" href="mailto:{{ user.email }}">{{ user.email }}</a>
+
+    <h2>Adresse</h2>
+    {% if user.address and user.city and user.postalCode %}
+        {{ user.address }} {{ user.postalCode }} {{ user.city }}
     {% else %}
         <p>{{ user.name }} n'a pas renseigné son adresse</p>
     {% endif %}

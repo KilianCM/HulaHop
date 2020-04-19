@@ -18,7 +18,7 @@
                     <p class="desc-title">Description</p>
                     <p class="desc">{{game.description}}</p>
                 </div>
-                {% if app.user %}
+                {% if app.user and not game.isBorrowed%}
                 <div class="borrow">
                     <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
                 </div>

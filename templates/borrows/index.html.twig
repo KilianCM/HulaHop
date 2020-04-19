@@ -6,7 +6,11 @@
     <div class="content borrow-list-page">
         <h1 class="title">Mes jeux</h1>
         <div class="games-container">
-            {% include "components/borrowed_games_list.html.twig" with {'borrows': borrows, 'noContent': "Vous n'avez aucun emprunt en cours." } %}
+            {% for borrow in borrows %}
+                {% include "components/game.html.twig" with { 'borrow': borrow, 'game': borrow.game, 'index': loop.index } %}
+            {% else %}
+                <p>Aucun emprunt en cours.</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

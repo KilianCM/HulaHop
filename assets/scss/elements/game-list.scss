@@ -32,13 +32,30 @@
             }
         }
 
-        .title{
+        .title-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 5px;
-            cursor: pointer;
-            text-decoration: none;
+
+            .title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 5px;
+                cursor: pointer;
+                text-decoration: none;
+
+                h2{
+                    text-decoration: none;
+                    font-weight: bold;
+                    color: $blue;
+                    transition: color ease-in-out 0.3s;
+
+                    &:hover {
+                        color: $blue-hover;
+                    }
+                }
+            }
 
             .discount {
                 background-color: $green;
@@ -46,17 +63,6 @@
                 border-radius: 2px;
                 color: white;
                 font-weight: bold;
-            }
-
-            h2{
-                text-decoration: none;
-                font-weight: bold;
-                color: $blue;
-                transition: color ease-in-out 0.3s;
-
-                &:hover {
-                    color: $blue-hover;
-                }
             }
         }
 
@@ -77,6 +83,17 @@
                 font-size: 20px;
             }
 
+        }
+
+        .end-date {
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            span {
+                color: $blue;
+                font-size: 16px;
+                font-weight: bold;
+            }
         }
 
         .category{

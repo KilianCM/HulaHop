@@ -4,30 +4,38 @@
 
 {% block body %}
 
-    <h1>{{ app.user.name }}</h1>
-    <img src="{{ app.user.imageUrl }}" width="300" alt="">
+    <div class="profile-page">
+        <div class="header">
+            <h1>{{ app.user.name }}</h1>
+            <div class="button">
+                <a href="{{ path("edit_profile") }}" class="btn">Editer mon profil</a>
+            </div>
+        </div>
+        <img src="{{ app.user.imageUrl }}" width="300" alt="">
 
-    <h2>Email</h2>
-    <p>{{ app.user.email }}</p>
+        <h2>Informations personnelles</h2>
+        <h3>Email</h3>
+        <p>{{ app.user.email }}</p>
 
-    <h2>Adresse</h2>
-    <p>{{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
+        <h3>Adresse</h3>
+        <p>{{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
 
-    <h2>Liste d'amis</h2>
-    {% for user in app.user.friends %}
-    <p>{{ user.imageUrl }}{{ user.name }}</p>
+        <h2>Liste d'amis</h2>
+        {% for user in app.user.friends %}
+            <p>{{ user.imageUrl }}{{ user.name }}</p>
 
-    {% endfor %}
-
-    <div class="content borrow-list-page">
-    <h2 class="title">Mes jeux</h2>
-    <div class="games-container">
-        {% for borrow in app.user.borrows %}
-            {% include "components/game.html.twig" with { 'borrow': borrow, 'game': borrow.game, 'index': loop.index } %}
-        {% else %}
-            <p>Aucun emprunt en cours.</p>
         {% endfor %}
+
+        <div class="content borrow-list-page">
+            <h2 class="title">Mes jeux</h2>
+            <div class="games-container">
+                {% for borrow in app.user.borrows %}
+                    {% include "components/game.html.twig" with { 'borrow': borrow, 'game': borrow.game, 'index': loop.index } %}
+                {% else %}
+                    <p>Aucun emprunt en cours.</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <a href="{{ path("edit_profile") }}" class="btn">Editer son profil</a>
 
 {% endblock %}

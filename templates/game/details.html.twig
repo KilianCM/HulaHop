@@ -15,7 +15,7 @@
                 <div class="details">
                     <p class="dispo"><span class="title">État : </span> {% if game.isBorrowed %} <span class="false">Non disponible</span> {% else %} <span class="true">Disponible</span> {% endif %}</p>
                     <p class="cat"><span class="title">Categorie :</span> <a href="#">{{game.category.name}}</a></p>
-                    <p class="desc-title">Description</p>
+                    <h2 class="desc-title">Description</h2>
                     <p class="desc">{{game.description}}</p>
                 </div>
                 {% if app.user and not game.isBorrowed%}

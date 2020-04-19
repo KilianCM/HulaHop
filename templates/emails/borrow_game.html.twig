@@ -7,8 +7,7 @@
             <span style="color: #00adb5">{{ game.name }}</span>
         </p>
         <h3 style="color: #222831;">Adresse de livraison</h3>
-        <p>{{ app.user.address }}</p>
-        <p>{{ app.user.postalCode }} {{ app.user.city }}</p>
+        <p>{{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
 
         <p>Date de livraison estimée :
             <span style="color:#00adb5; font-weight: bold">{{ deliveryEstimatedDate|date("d/m/Y") }}</span>

@@ -55,21 +55,19 @@ class BorrowController extends AbstractController
      * @Route("/borrows/return/{id}", name="return_game")
      * @param MailerManager $mailerManager
      * @param Borrow $borrow
-     * @param Game $game
      * @param EntityManagerInterface $entityManager
      * @return RedirectResponse
      */
     public function returnGame(
         MailerManager $mailerManager,
         Borrow $borrow,
-        Game $game,
         EntityManagerInterface $entityManager
     )
     {
         $borrow->setIsReturned(true);
-        $game->setIsBorrowed(false);
+        $borrow->getGame()->setIsBorrowed(false);
         $entityManager->persist($borrow);
-        $entityManager->persist($game);
+        $entityManager->persist($borrow->getGame());
         $entityManager->flush();
         $mailerManager->sendReturnGameMail($borrow);
         return new RedirectResponse("/borrows");

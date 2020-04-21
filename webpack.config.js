@@ -6,7 +6,6 @@ Encore
     .setOutputPath('public/build/')
     // the public path used by the web server to access the previous directory
     .setPublicPath('/build')
-    .addEntry('app', './assets/js/app.js')
     .cleanupOutputBeforeBuild()                     // empties the outputPath dir before each build
     .enableSourceMaps(!Encore.isProduction())       // enables source maps for Dev
     // .enableVersioning(Encore.isProduction())     // uncomment to create hashed filenames (e.g. app.abc123.css)

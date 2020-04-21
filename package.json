@@ -10,5 +10,8 @@
     "devbridge-autocomplete": "^1.4.10",
     "leaflet": "^1.6.0",
     "leaflet-easybutton": "^2.4.0"
+  },
+  "scripts": {
+    "build": "encore production"
   }
 }

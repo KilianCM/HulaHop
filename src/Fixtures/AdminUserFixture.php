@@ -6,10 +6,11 @@ namespace App\Fixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class AdminUserFixture extends Fixture
+class AdminUserFixture extends Fixture implements FixtureGroupInterface
 {
     private $encoder;
 
@@ -25,8 +26,15 @@ class AdminUserFixture extends Fixture
         $user->setEmail("admin@admin.com");
         $user->setPassword($this->encoder->encodePassword($user, "azerty"));
         $user->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
-
+        $manager->persist($user);
         $manager->flush();
     }
 
+    /**
+     * @inheritDoc
+     */
+    public static function getGroups(): array
+    {
+        return ['user'];
+    }
 }

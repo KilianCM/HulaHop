@@ -1,5 +1,13 @@
 ## HulaHop
 
+HulaHop is a website dedicated to board games. It represents a fictitious company that allows you to borrow board games 
+and receive them directly at home. The user returns the game at the end of the borrowing period. He can also find 
+players near his home on a card and add them as friends to play board games.
+
+#### Why *"HulaHop"* ?
+
+*Hula* is the hawaian term for *play*. So we made a link between playing game and the famous toy *HulaHoop*.
+
 ### Requirements
 
 - PHP >= 7.4
@@ -10,6 +18,14 @@
 ### How to use it ?
 
 To launch the project for dev purpose, you have to launch these commands : 
+
+#### With Docker
+
+```
+docker-compose up
+```
+
+#### Whitout Docker
 
 - Launch PHP server :
 ```

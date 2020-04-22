@@ -19,6 +19,7 @@ RUN apt-get update && \
 RUN docker-php-ext-install pdo pdo_mysql curl zip
 
 COPY --from=build-node-stage /app /app
+
 WORKDIR /app
 
 RUN composer install -o --no-scripts

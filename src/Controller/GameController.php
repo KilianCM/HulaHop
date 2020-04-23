@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
+use App\Repository\RatingRepository;
 use App\Services\BoardGamesApi;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,12 +19,15 @@ class GameController extends AbstractController
      * @Route("game/description/{id}", name="description_game")
      * @param GameRepository $gameRepository
      * @param $id
+     * @param RatingRepository $ratingRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showDescriptionGame(GameRepository $gameRepository, $id) {
+    public function showDescriptionGame(GameRepository $gameRepository, $id, RatingRepository $ratingRepository) {
         $game = $gameRepository->find($id);
+        $ratings = $ratingRepository->findBy(['game' => $id]);
         return $this->render('game/details.html.twig', [
-            'game' => $game
+            'game' => $game,
+            'ratings' => $ratings
         ]);
     }
 

@@ -23,6 +23,13 @@
                     <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
                 </div>
                 {% endif %}
+                <h2>Notes</h2>
+                {% for rating in ratings %}
+                    <p>{{ rating.user }}</p>
+
+                    <p>Commentaire : {{ rating.comment }}</p>
+                    <p>Note : {{ rating.note }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

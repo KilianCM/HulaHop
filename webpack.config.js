@@ -13,6 +13,7 @@ Encore
     // define the assets of the project
     .addEntry('js/app', './assets/js/main.js')
     .addEntry('js/locate', './assets/js/locate.js')
+    .addEntry('js/filter', './assets/js/filter.js')
     .addStyleEntry('css/style', './assets/scss/app.scss')
     .enableSassLoader()
     .addPlugin(new CopyWebpackPlugin([

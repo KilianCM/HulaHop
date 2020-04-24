@@ -1,8 +1,18 @@
 {% extends 'base.html.twig' %}
 
+
+
 {%  block title %}Laisse ton avis{% endblock %}
+
+
 
 {% block body %}
     <h1>Laisse ton avis sur {{ game.name }}</h1>
-
+    <div class="registration-page">
+        {{ form_start(ratingForm) }}
+        {{ form_row(ratingForm.note)}}
+        {{ form_row(ratingForm.comment) }}
+        <button class="btn">Envoyer</button>
+        {{ form_end(ratingForm) }}
+    </div>
 {% endblock %}

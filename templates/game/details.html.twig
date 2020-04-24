@@ -42,7 +42,7 @@
                             <p class="grade {% if rating.note >= 4 %}good{% elseif rating.note <= 2 %}bad{% endif %}">{{ rating.note }}/5</p>
                         </div>
                         <h5>Commentaire</h5>
-                        <p class="comment">{{ rating.comment }}</p>
+                        <p class="comment">{{ rating.comment|length > 155 ? rating.comment|slice(0, 155) ~ '...' : rating.comment }}</p>
 
                         <div class="toolbox">
                             {% if is_granted('delete', rating) %}

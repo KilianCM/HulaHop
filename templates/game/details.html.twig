@@ -36,6 +36,9 @@
                     {% if is_granted('delete', rating) %}
                         <a href="{{ path('rating_delete', {'id': rating.id }) }}" class="btn btn-outline-danger">supprimer</a>
                     {% endif %}
+                    {% if is_granted('edit', rating) %}
+                        <a href="{{ path('rating_edit', {'id': rating.id }) }}" class="btn btn-outline-danger">modifier</a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

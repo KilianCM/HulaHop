@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 class RatingVoter extends Voter
 {
     const DELETE = "delete";
+    const EDIT = "edit";
     private $security;
 
     public function __construct(Security $security)
@@ -23,7 +24,7 @@ class RatingVoter extends Voter
     protected function supports(string $attribute, $subject)
     {
         // if the attribute isn't one we support, return false
-        if (!in_array($attribute, [self::DELETE])) {
+        if (!in_array($attribute, [self::DELETE, self::EDIT])) {
             return false;
         }
 
@@ -55,6 +56,8 @@ class RatingVoter extends Voter
         switch ($attribute) {
             case self::DELETE:
                 return $this->canDelete($rating, $user);
+            case self::EDIT:
+                return $this->canEdit($rating, $user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -64,4 +67,9 @@ class RatingVoter extends Voter
     {
         return $user === $rating->getUser();
     }
+
+    private function canEdit(Rating $rating, User $user) {
+        return $user === $rating->getUser();
+    }
+
 }

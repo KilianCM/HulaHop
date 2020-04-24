@@ -23,13 +23,11 @@ class RatingController extends AbstractController
     /**
      * @Route("/rating/add/{id}", name="rating_game")
      * @param Game $game
-     * @param GameRepository $gameRepository
      * @param EntityManagerInterface $entityManager
      * @param Request $request
-     * @param $id
      * @return Response
      */
-    public function createRating(Game $game, GameRepository $gameRepository, EntityManagerInterface $entityManager, Request $request, $id) {
+    public function createRating(Game $game, EntityManagerInterface $entityManager, Request $request) {
         $form = $this->createForm(RatingFormType::class);
         $form->handleRequest($request);
 
@@ -43,8 +41,7 @@ class RatingController extends AbstractController
             $entityManager->persist($rating);
 
             $entityManager->flush();
-            $game = $gameRepository->find($id);
-            return new RedirectResponse("/game/description/".$game->getId());
+            return new RedirectResponse("/game/description/".$rating->getGame()->getId());
         }
 
         return $this->render("rating/rating.html.twig", [
@@ -66,6 +63,34 @@ class RatingController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute("description_game", ["id" => $rating->getGame()->getId()]);
+    }
+
+    /**
+     * @Route("/rating/{id}/edit", name="rating_edit")
+     * @param Rating $rating
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse|Response
+     */
+    public function edit(Rating $rating, Request $request, EntityManagerInterface $entityManager) {
+        $this->denyAccessUnlessGranted(RatingVoter::EDIT, $rating);
+        $form = $this->createForm(RatingFormType::class, $rating);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $rating->setComment($form->get("comment")->getData());
+            $rating->setNote($form->get("note")->getData());
+            $entityManager->persist($rating);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('description_game', ["id" => $rating->getGame()->getId()]);
+        }
+
+        return $this->render("/rating/rating.html.twig", [
+            "ratingForm" => $form->createView(),
+            "game" => $rating->getGame()
+        ]);
+
+
     }
 
 }

@@ -37,10 +37,9 @@ class RatingController extends AbstractController
             $rating->setGame($game);
             $rating->setComment($form->get("comment")->getData());
             $rating->setNote($form->get("note")->getData());
-
             $entityManager->persist($rating);
-
             $entityManager->flush();
+
             return new RedirectResponse("/game/description/".$rating->getGame()->getId());
         }
 
@@ -89,8 +88,6 @@ class RatingController extends AbstractController
             "ratingForm" => $form->createView(),
             "game" => $rating->getGame()
         ]);
-
-
     }
 
 }

@@ -1,101 +1,171 @@
-.game-details{
-  .game-container{
+.game-details {
+  width: 100%;
 
-    .right-side{
+  .game-container {
+    @include desktop {
+      display: flex;
+      justify-content: space-evenly;
+
+      .left-side {
+        margin-right: 40px;
+      }
+    }
+    .right-side {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      @include desktop{
-        max-width: 40vw;
-      }
-      @include tablet{
-        width: 60vw;
-      }
-      @include mobile{
-        width: calc(100vw - 40px);
-        padding: 0 20px;
-      }
 
-
-      .desc-title{
+      .desc-title {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
       }
 
-      .dispo{
+      .desc {
+        margin-right: 50px;
+      }
+
+      .dispo {
         font-weight: bold;
 
-        span.true{
-          color:$green;
+        span.true {
+          color: $green;
         }
-        span.false{
-          color:$red-hover;
+
+        span.false {
+          color: $red-hover;
         }
       }
-      .cat{
+
+      .cat {
+        span {
+          color: black;
+        }
         font-weight: bold;
-
-        a{
-          color: $lightgray;
-          text-decoration: none;
-          transition: .3s;
-          &:hover{
-            text-decoration: underline;
-          }
-        }
+        color: $lightgray;
       }
 
-      .button{
-        display: flex;
-        align-items: flex-end;
-
-        a{
-          padding: 10px 20px;
-          text-decoration: none;
-          color:$white;
-          font-weight: bold;
-          transition: .3s;
-          background-color: $blue;
-          border-radius: 5px;
-          box-shadow: 0px 0px 3px gray;
-          &:hover{
-            box-shadow: 0px 0px 0px gray;
-          }
-        }
-
-        @include mobile{
-          margin-top: 15px;
-          justify-content: center;
-
-          a{
-            width:100%;
-            text-align: center;
-            box-shadow: 0px 0px 5px gray;
-            &:hover{
-              box-shadow: 0px 0px 0px black;
-            }
-          }
-        }
-      }
-      p{
+      p {
         margin-bottom: 20px;
       }
     }
+
   }
-  .img{
-    width: 100%;
+
+
+  .before-button {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: unset;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 10px;
+
+    a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: $white;
+      font-weight: bold;
+      transition: .3s;
+      background-color: $blue;
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px gray;
+
+      &:hover {
+        box-shadow: 0px 0px 0px gray;
+      }
+    }
+
+    @include mobile {
+      margin-top: 15px;
+      justify-content: center;
+
+      a {
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 0px 5px gray;
+
+        &:hover {
+          box-shadow: 0px 0px 0px black;
+        }
+      }
+    }
+  }
+
+  img {
+    max-width: 400px;
     margin-bottom: 30px;
-    img{
-      @include desktop{
-        width: 40vw;
+  }
+
+  .ratings {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: 30px;
       }
-      @include tablet{
-        width: 60vw;
-      }
-      @include mobile{
-        width: calc(100vw - 40px);
-        padding: 0 20px;
+    }
+
+    .rating-list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .rating-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+        margin: 20px;
+        margin-left: 0px;
+        padding: 10px;
+        width: 250px;
+        height: 140px;
+
+        .header {
+          font-size: 20px;
+          color: $blue;
+          font-weight: bold;
+
+          .grade {
+            &.good {
+              color: $green;
+            }
+            &.bad {
+              color: $red
+            }
+          }
+        }
+
+        h5 {
+          font-weight: bold;
+          font-size: 12px;
+          margin: 10px 0 5px 0;
+        }
+
+        .comment {
+          height: 80px;
+        }
+
+        .toolbox {
+          a {
+            color: $blue;
+            transition: color ease-in-out 0.3s;
+            text-decoration: none;
+            &:hover {
+              color:$blue-hover
+            }
+          }
+        }
       }
     }
   }

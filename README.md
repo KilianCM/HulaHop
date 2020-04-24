@@ -52,5 +52,5 @@ This project use [the Photon API](https://photon.komoot.de/) to transform postal
 
 ### Board Games API
 
-This project use [the Board Game API](https://www.boardgameatlas.com/api/docs/) to get games list with prices. This API require to create a free account and an application to get a CLIENT_ID.
-You need to set the `BOARD_GAMES_CLIENT_ID` env var with.
+This project use [the Board Game API](https://www.boardgameatlas.com/api/docs/) to get games list with prices. This API require to create a free account and an application to get a `CLIENT_ID`.
+You need to set the `BOARD_GAMES_CLIENT_ID` env var with it.

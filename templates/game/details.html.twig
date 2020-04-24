@@ -1,44 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{game.name}}{% endblock %}
+{% block title %}{{ game.name }}{% endblock %}
 
 {% block body %}
     <div class="content game-details">
-        <h1>{{game.name}}</h1>
+        <h1>{{ game.name }}</h1>
         <div class="game-container">
             <div class="left-side">
-                <div class="img">
-                    <img src="{{game.imageUrl}}" width=300 alt="">
-                </div>
+                <img src="{{ game.imageUrl }}" alt="{{ game.name }}">
             </div>
             <div class="right-side">
                 <div class="details">
-                    <p class="dispo"><span class="title">État : </span> {% if game.isBorrowed %} <span class="false">Non disponible</span> {% else %} <span class="true">Disponible</span> {% endif %}</p>
-                    <p class="cat"><span class="title">Categorie :</span> <a href="#">{{game.category.name}}</a></p>
+                    <p class="dispo"><span class="title">État : </span> {% if game.isBorrowed %} <span class="false">Non disponible</span> {% else %}
+                            <span class="true">Disponible</span> {% endif %}</p>
+                    <p class="cat"><span class="title">Categorie :</span> {{ game.category.name }}</p>
                     <h2 class="desc-title">Description</h2>
-                    <p class="desc">{{game.description}}</p>
+                    <p class="desc">{{ game.description }}</p>
                 </div>
-                {% if app.user and not game.isBorrowed%}
-                <div class="button">
-                    <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
-                </div>
-                {% endif %}
-                <h2>Notes</h2>
+            </div>
+        </div>
+        <hr>
+        {% if app.user and not game.isBorrowed %}
+            <p class="before-button">N'hésite plus :</p>
+            <div class="button">
+                <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter ce jeu</a>
+            </div>
+        {% endif %}
+        <hr>
+        <div class="ratings">
+            <div class="header">
+                <h2>Avis</h2>
                 <div class="button">
                     <a href="{{ path("rating_game", { 'id' : game.id}) }}" class="btn">Laisser un avis</a>
                 </div>
+            </div>
+            <div class="rating-list">
                 {% for rating in ratings %}
-                    <p>{{ rating.user }}</p>
+                    <div class="rating-card">
+                        <div class="header">
+                            <p class="user">{{ rating.user.name }}</p>
+                            <p class="grade {% if rating.note >= 4 %}good{% elseif rating.note <= 2 %}bad{% endif %}">{{ rating.note }}/5</p>
+                        </div>
+                        <h5>Commentaire</h5>
+                        <p class="comment">{{ rating.comment }}</p>
 
-                    <p>Commentaire : {{ rating.comment }}</p>
-                    <p>Note : {{ rating.note }}</p>
+                        <div class="toolbox">
+                            {% if is_granted('delete', rating) %}
+                                <a href="{{ path('rating_delete', {'id': rating.id }) }}"
+                                   class="btn btn-outline-danger">supprimer</a>
+                            {% endif %}
+                            {% if is_granted('edit', rating) %}
+                                <a href="{{ path('rating_edit', {'id': rating.id }) }}" class="btn btn-outline-danger">modifier</a>
+                            {% endif %}
+                        </div>
+                    </div>
 
-                    {% if is_granted('delete', rating) %}
-                        <a href="{{ path('rating_delete', {'id': rating.id }) }}" class="btn btn-outline-danger">supprimer</a>
-                    {% endif %}
-                    {% if is_granted('edit', rating) %}
-                        <a href="{{ path('rating_edit', {'id': rating.id }) }}" class="btn btn-outline-danger">modifier</a>
-                    {% endif %}
                 {% endfor %}
             </div>
         </div>

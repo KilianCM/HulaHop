@@ -5,23 +5,27 @@
 {% block body %}
     <div class="locate-page">
         <h1>Trouve des joueurs proche de toi !</h1>
-
         {% if app.user.latitude and app.user.longitude %}
             <p>Ici tu peux retrouver des joueurs HulaHopien proche de chez toi.</p>
             <p>Ajoute les en amis pour découvrir leurs jeux et organiser des parties ensemble !</p>
             <div id="map"></div>
         {% else %}
-            <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>
-            <div>
+            <div class="container">
+                <p>Pour que tu puisses trouver des joueurs proches, il faut nous indiquer ton adresse :</p>
                 {{ form_start(addressForm) }}
-
-                {{ form_row(addressForm.address) }}
-                {{ form_row(addressForm.postalCode) }}
-                {{ form_row(addressForm.city) }}
+                <div class="input">
+                    {{ form_row(addressForm.address) }}
+                </div>
+                <div class="input">
+                    {{ form_row(addressForm.postalCode) }}
+                </div>
+                <div class="input">
+                    {{ form_row(addressForm.city) }}
+                </div>
                 <button class="btn">OK</button>
+                <p>Promis on l'utilise que pour la carte !</p>
                 {{ form_end(addressForm) }}
             </div>
-            <p>Promis on l'utilise que pour la carte !</p>
         {% endif %}
     </div>
 {% endblock %}

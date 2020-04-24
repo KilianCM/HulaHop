@@ -10,6 +10,39 @@
             margin: 30px -10px 0 -10px;
         }
     }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        form {
+            max-width: 500px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .input {
+                label {
+                    display: inline-block;
+                    width: 140px;
+                    text-align: left;
+                }
+                input {
+                    width: 150px;
+                }
+            }
+
+            .btn {
+                max-width: 100px;
+                margin-bottom: 30px;
+            }
+        }
+    }
 }
 
 .map-popup {

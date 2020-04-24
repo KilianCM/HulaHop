@@ -7,13 +7,20 @@
         <h1>Liste des jeux disponibles</h1>
         <p>Tu peux retrouver ici tous les jeux disponibles à l'emprunt mis à disposition par HulaHop.</p>
         <p class="info-price">Chez HulaHop, c'est tarif unique : <span>5€ pour 30 jours</span> d'emprunt, livraison comprise.</p>
-        
-        {% for category in categories %}
-            <input type="checkbox" id="{{ category.id }}" value="{{ category.id }}">
-            <label for="{{ category.id }}">{{ category.name }}</label>
-        {% endfor %}
-        <button id="button-filter">Filtrer</button>
-
+        <hr>
+        <div class="filter">
+            <h5>Filtrer les jeux par catégorie</h5>
+            <div class="categories">
+                {% for category in categories %}
+                    <div class="choice">
+                        <input type="checkbox" id="{{ category.id }}" value="{{ category.id }}">
+                        <label for="{{ category.id }}">{{ category.name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <button id="button-filter">Filtrer</button>
+        </div>
+        <hr>
         <div class="games-container">
            {% for game in games %}
                 {% include "components/game.html.twig" with { 'borrow': null, 'game': game, 'index': loop.index } %}

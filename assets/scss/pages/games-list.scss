@@ -5,4 +5,45 @@
             font-weight: bold;
         }
     }
+
+    .filter {
+        h5 {
+            font-size: 12px;
+            font-weight: bold;
+            color: $blue;
+            margin-bottom: 10px;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            .choice {
+                margin-right: 20px;
+                margin-bottom: 10px;
+                label {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px;
+            background-color: $blue;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            transition: background-color ease-in-out 0.3s;
+
+            &:hover {
+                background-color: $blue-hover;
+                cursor: pointer;
+            }
+        }
+    }
+
+    hr {
+        margin: 10px 20px 10px 0;
+    }
 }

@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Forms\ProfileFormType;
 use App\Repository\UserRepository;
+use App\Services\UserManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,10 +28,11 @@ class UserController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function addFriend(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager) {
+    public function addFriend(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager)
+    {
         $content = json_decode($request->getContent(), true);
         $user = $userRepository->find($content["user"]);
-        if(!$user) {
+        if (!$user) {
             return new Response("User not found", Response::HTTP_NOT_FOUND);
         }
         $this->getUser()->addFriend($user);
@@ -44,7 +46,8 @@ class UserController extends AbstractController
      * @Route("/profile", name="user_profile")
      * @return Response
      */
-    public function profile(){
+    public function profile()
+    {
         return $this->render('user/profile.html.twig', [
             'user' => $this->getUser()
         ]);
@@ -54,7 +57,8 @@ class UserController extends AbstractController
      * @Route("/friends", name="user_friends")
      * @return Response
      */
-    public function userFriends(){
+    public function userFriends()
+    {
         return $this->render('user/friends.html.twig');
     }
 
@@ -63,7 +67,8 @@ class UserController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function friendProfile(User $user){
+    public function friendProfile(User $user)
+    {
         return $this->render('user/friend_profile.html.twig', [
             'user' => $user
         ]);
@@ -73,22 +78,27 @@ class UserController extends AbstractController
      * @Route("/profile/edit", name="edit_profile")
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param UserManager $userManager
      * @return Response
      */
-    public function editProfile(Request $request, EntityManagerInterface $entityManager){
+    public function editProfile(Request $request, EntityManagerInterface $entityManager, UserManager $userManager)
+    {
         $user = $this->getUser();
 
         $form = $this->createForm(ProfileFormType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $user->setEmail($form->get("email")->getData());
             $user->setName($form->get("name")->getData());
-            $user->setAddress($form->get("address")->getData());
-            $user->setCity($form->get("city")->getData());
-            $user->setPostalCode($form->get("postalCode")->getData());
             $entityManager->persist($this->getUser());
             $entityManager->flush();
+            $userManager->addAddress(
+                $user,
+                $form->get("address")->getData(),
+                $form->get("city")->getData(),
+                $form->get("postalCode")->getData()
+            );
             return new RedirectResponse("/profile");
         }
 
@@ -97,7 +107,6 @@ class UserController extends AbstractController
             'editProfileForm' => $form->createView()
         ]);
     }
-
 
 
 }

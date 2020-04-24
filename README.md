@@ -25,7 +25,7 @@ To launch the project for dev purpose, you have to launch these commands :
 docker-compose up
 ```
 
-#### Whitout Docker
+#### Without Docker
 
 - Launch PHP server :
 ```

@@ -9,6 +9,8 @@ use App\Entity\Game;
 use App\Entity\Rating;
 use App\Forms\RatingFormType;
 use App\Repository\GameRepository;
+use App\Repository\RatingRepository;
+use App\Security\RatingVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -53,11 +55,17 @@ class RatingController extends AbstractController
     }
 
     /**
-     * @Route("/rating/edit/{id}", name="rating_post")
-     *
+     * @Route("/rating/{id}/delete", name="rating_delete")
+     * @param Rating $rating
+     * @param EntityManagerInterface $entityManager
+     * @return RedirectResponse
      */
-    public function editRating() {
+    public function delete(Rating $rating, EntityManagerInterface $entityManager) {
+        $this->denyAccessUnlessGranted(RatingVoter::DELETE, $rating);
+        $entityManager->remove($rating);
+        $entityManager->flush();
 
+        return $this->redirectToRoute("description_game", ["id" => $rating->getGame()->getId()]);
     }
 
 }

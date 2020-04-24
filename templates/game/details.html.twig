@@ -32,6 +32,10 @@
 
                     <p>Commentaire : {{ rating.comment }}</p>
                     <p>Note : {{ rating.note }}</p>
+
+                    {% if is_granted('delete', rating) %}
+                        <a href="{{ path('rating_delete', {'id': rating.id }) }}" class="btn btn-outline-danger">supprimer</a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

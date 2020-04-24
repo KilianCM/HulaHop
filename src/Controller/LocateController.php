@@ -24,11 +24,12 @@ class LocateController extends AbstractController
      * @param UserManager $manager
      * @return Response
      */
-    public function findGamers(Request $request, UserManager $manager) {
+    public function findGamers(Request $request, UserManager $manager)
+    {
         $form = $this->createForm(AddressFormType::class);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $address = $form->get("address")->getData();
             $city = $form->get("city")->getData();
             $postalCode = $form->get("postalCode")->getData();
@@ -46,12 +47,19 @@ class LocateController extends AbstractController
      * @Route("/locate/user", name="get_user_coordinate")
      * @Method("GET")
      * @param UserRepository $userRepository
+     * @param SerializerInterface $serializer
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getUserCoordinates(UserRepository $userRepository, SerializerInterface $serializer) {
-        $users = $userRepository->findAllWithoutCurrent($this->getUser()->getId());
+    public function getUserCoordinates(UserRepository $userRepository, SerializerInterface $serializer)
+    {
+        $users = $userRepository->findAllWithoutCurrentAndFriends(
+            $this->getUser()->getId(),
+            $this->getUser()->getFriends()
+        );
+
         return $this->json([
             "currentUser" => $serializer->serialize($this->getUser(), 'json', ['groups' => ['user']]),
+            "friends" => $this->getUser()->getFriends(),
             "otherUsers" => $users
         ]);
     }

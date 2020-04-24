@@ -12,31 +12,41 @@ window.addEventListener("DOMContentLoaded", (event) => {
             map.addMarkerAndZoom(JSON.parse(response["currentUser"]));
             response["otherUsers"].forEach(user => {
                 map.addMarker(user, "#00adb5", createUserPopupContent(user))
-            })
+            });
+            response["friends"].forEach(friend => {
+                map.addMarker(friend, "#009900", createUserPopupContent(friend, false))
+            });
         }
     };
     xhr.open('GET', '/locate/user');
     xhr.send();
 });
 
-function createUserPopupContent(user) {
+function createUserPopupContent(user, withButton = true) {
     const title = document.createElement("h4");
     const text = document.createTextNode(user.name);
     title.appendChild(text);
-
-    const button = document.createElement("button");
-    button.appendChild(document.createTextNode("Ajouter en ami"));
-    button.addEventListener("click",  function() {
-        const confirm = window.confirm("Voulez-vous ajouter " + user.name + " en ami ?");
-        if (confirm === true) {
-            addFriend(user.id);
-            button.style.display = "none";
-        }
-    });
     const div = document.createElement("div");
     div.classList.add("map-popup");
     div.appendChild(title);
-    div.appendChild(button);
+
+    if (withButton) {
+        const button = document.createElement("button");
+        button.appendChild(document.createTextNode("Ajouter en ami"));
+        button.addEventListener("click",  function() {
+            const confirm = window.confirm("Voulez-vous ajouter " + user.name + " en ami ?");
+            if (confirm === true) {
+                addFriend(user.id);
+                button.style.display = "none";
+            }
+        });
+        div.appendChild(button);
+    } else {
+        const p = document.createElement("p");
+        p.appendChild(document.createTextNode("Déjà ami"));
+        div.appendChild(p);
+    }
+
     return div
 }
 

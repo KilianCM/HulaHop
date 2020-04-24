@@ -36,14 +36,20 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    public function findAllWithoutCurrent($currendUserId)
+    public function findAllWithoutCurrentAndFriends($currendUserId, $friends)
     {
+        $friends = array_map(function($value) {
+            return $value->getId();
+        }, $friends->getValues());
+
         $qb = $this->createQueryBuilder('user')
             ->select('user.id, user.name, user.latitude, user.longitude')
             ->where('user.id != :id')
-            ->setParameter('id', $currendUserId)
-            ->getQuery();
+            ->setParameter('id', $currendUserId);
 
-        return $qb->getResult();
+        foreach ($friends as $id) {
+            $qb->andWhere("user.id != " . $id);
+        }
+        return $qb->getQuery()->getResult();
     }
 }

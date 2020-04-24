@@ -10,9 +10,9 @@
         
         {% for category in categories %}
             <input type="checkbox" id="{{ category.id }}" value="{{ category.id }}">
-            <label for="categoryCheckbox">{{ category.name }}</label>
+            <label for="{{ category.id }}">{{ category.name }}</label>
         {% endfor %}
-        <button id="btnFilter">Filtrer</button>
+        <button id="button-filter">Filtrer</button>
 
         <div class="games-container">
            {% for game in games %}

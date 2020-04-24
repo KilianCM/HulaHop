@@ -19,11 +19,14 @@
                     <p class="desc">{{game.description}}</p>
                 </div>
                 {% if app.user and not game.isBorrowed%}
-                <div class="borrow">
+                <div class="button">
                     <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
                 </div>
                 {% endif %}
                 <h2>Notes</h2>
+                <div class="button">
+                    <a href="{{ path("rating_game", { 'id' : game.id}) }}" class="btn">Laisser un avis</a>
+                </div>
                 {% for rating in ratings %}
                     <p>{{ rating.user }}</p>
 

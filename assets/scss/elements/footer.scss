@@ -1,13 +1,14 @@
 footer {
     position: absolute;
     bottom: 20px;
-    display: none;
     flex-direction: column;
     align-items: center;
     width: 100%;
 
     @include not-mobile {
-        margin-left: -10px;
+        margin-left: 38px;
+        width: unset;
+        text-align: center;
     }
 
     h4 {
@@ -31,5 +32,13 @@ footer {
 #menu.burger-click {
     footer {
         display: flex;
+    }
+}
+
+#menu:not(.burger-click) {
+    @include mobile {
+        footer {
+            display: none;
+        }
     }
 }

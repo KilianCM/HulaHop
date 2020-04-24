@@ -22,7 +22,8 @@ class GameController extends AbstractController
      * @param RatingRepository $ratingRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showDescriptionGame(GameRepository $gameRepository, $id, RatingRepository $ratingRepository) {
+    public function showDescriptionGame(GameRepository $gameRepository, $id, RatingRepository $ratingRepository)
+    {
         $game = $gameRepository->find($id);
         $ratings = $ratingRepository->findBy(['game' => $id]);
         return $this->render('game/details.html.twig', [
@@ -39,13 +40,15 @@ class GameController extends AbstractController
      * @param CategoryRepository $categoryRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function list(GameRepository $gameRepository, CategoryRepository $categoryRepository, Request $request) {
-
+    public function list(GameRepository $gameRepository, CategoryRepository $categoryRepository, Request $request)
+    {
         $categories = $categoryRepository->findAll();
-        $games = $gameRepository->findBy(["isBorrowed" => false]);
-
-        if($request->query->get("categories")) {
-            $games = $gameRepository->findBy(["isBorrowed" => false, "category" => $request->query->get("categories")]);
+        $categoriesParam = $request->query->get("categories");
+        if ($categoriesParam) {
+            $categoriesParam = explode(",",$categoriesParam);
+            $games = $gameRepository->findAllCategories($categoriesParam);
+        } else {
+            $games = $gameRepository->findBy(["isBorrowed" => false]);
         }
 
         return $this->render('game/list.html.twig', [
@@ -55,14 +58,14 @@ class GameController extends AbstractController
     }
 
 
-
     /**
      * @Route("/deals", name="deals_page")
      * @Method("GET")
      * @param BoardGamesApi $boardGamesApi
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function bestDeals(BoardGamesApi $boardGamesApi) {
+    public function bestDeals(BoardGamesApi $boardGamesApi)
+    {
         $games = $boardGamesApi->getGamesBestDeals(0.4);
         return $this->render('game/deals.html.twig', [
             "games" => $games

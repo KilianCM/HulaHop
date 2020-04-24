@@ -16,7 +16,6 @@
         {% if not borrow %}
             <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
         {% endif %}
-        <a href="{{ path("rating_game", { 'id' : game.id}) }}" class="btn">Laisse ton avis</a>
     </div>
     <style>
         .game-{{ index }}{opacity: 0;animation: fade-in;animation-duration: 1s;animation-delay: .{{ index }}s;animation-fill-mode: forwards;}

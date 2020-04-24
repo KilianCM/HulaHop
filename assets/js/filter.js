@@ -1,35 +1,41 @@
 
 window.addEventListener("DOMContentLoaded", (event) => {
+    checkInputWithQueryParam(window.location.search);
     filterCategory();
 });
 
-function filterCategory() {
+function checkInputWithQueryParam(params) {
+    const urlParams = new URLSearchParams(params);
+    const categories = urlParams.get("categories");
 
-    const btnFilter = document.querySelector("#btnFilter");
-    let category = document.getElementsByTagName("input");
+    if(categories) {
+        categories.split(",").forEach(id => {
+            let input = document.getElementById(id);
+            input.checked = true;
+        });
+    }
+}
+
+function filterCategory() {
+    const btnFilter = document.getElementById("button-filter");
+    let categories = Array.from(document.getElementsByTagName("input"));
     btnFilter.addEventListener("click", function () {
-        let categories;
-        let categoriesChecked = [];
-        for(let i = 0; i < category.length; i ++) {
-            if(category[i].checked) {
-                categoriesChecked.push(category[i].value);
-            }
-        }
+        let route = "/showcase";
+        // Get array of ids of selected inputs
+        let categoriesChecked = categories.filter(input => input.checked).map(category => category.value);
         if(categoriesChecked.length !== null && categoriesChecked.length !== 0){
             if(categoriesChecked.length > 1) {
-                categories = "/showcase?categories=";
+                route = "/showcase?categories=";
                 categoriesChecked.forEach(data => {
-                    categories += data + ",";
+                    route += data + ",";
                 });
-                categories = categories.substring(0, categories.length-1);
+                route = route.substring(0, route.length-1);
             }
             if(categoriesChecked.length === 1) {
-                categories = "/showcase?categories=" + categoriesChecked[0];
+                route = "/showcase?categories=" + categoriesChecked[0];
             }
-        } else {
-            categories = "/showcase";
         }
-        window.location.replace(categories);
+        window.location.replace(route);
     });
 
 }

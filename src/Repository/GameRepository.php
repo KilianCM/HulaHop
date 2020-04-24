@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Game;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
 
 /**
  * @method Game|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,22 @@ class GameRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Game::class);
+    }
+
+    public function findAllCategories(array $categoriesId, $isBorrowed = false)
+    {
+        $query = $this->createQueryBuilder('g')
+            ->where('g.isBorrowed = :val')
+            ->setParameter('val', $isBorrowed);
+
+        $orQuery = "";
+        foreach ($categoriesId as $id) {
+            $orQuery .= "g.category = " . $id . " OR ";
+        }
+        $orQuery = substr($orQuery, 0, strlen($orQuery) - 4);
+        return $query->andWhere($orQuery)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

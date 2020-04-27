@@ -1,4 +1,6 @@
-## HulaHop
+# HulaHop
+
+## Project information
 
 HulaHop is a website dedicated to board games. It represents a fictitious company that allows you to borrow board games 
 and receive them directly at home. The user returns the game at the end of the borrowing period. He can also find 
@@ -7,6 +9,22 @@ players near his home on a card and add them as friends to play board games.
 #### Why *"HulaHop"* ?
 
 *Hula* is the hawaian term for *play*. So we made a link between playing game and the famous toy *HulaHoop*.
+
+### Main features
+
+In addition to offering a game lending system, HulaHop offers innovative features for board game fans.
+
+#### Locate gamers
+
+A HulaHop user have access to a Leaflet map with markers on it. These markers represent others players that ben be add 
+as friend. An user can see the borrowed games of their friends to organise a party.
+
+#### Best deals
+
+HulaHop gives its users access to a list of games for sale with great discount value. This game data is provided
+by the Board Game API.
+
+## Technical information 
 
 ### Requirements
 

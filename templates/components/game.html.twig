@@ -13,8 +13,10 @@
         {% elseif borrow %}
             <p>Jeu rendu</p>
         {% endif %}
-        {% if not borrow %}
+        {% if not borrow and not game.isBorrowed %}
             <a href="{{ path("borrow_game", { 'id' : game.id }) }}" class="btn">Emprunter</a>
+            {% else %}
+        <p>Indisponible</p>
         {% endif %}
     </div>
     <style>

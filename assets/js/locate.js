@@ -10,10 +10,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             // What do when the request is successful
             const response = JSON.parse(xhr.response);
             map.addMarkerAndZoom(JSON.parse(response["currentUser"]));
-            response["otherUsers"].forEach(user => {
+            JSON.parse(response["otherUsers"]).forEach(user => {
                 map.addMarker(user, "#00adb5", createUserPopupContent(user))
             });
-            response["friends"].forEach(friend => {
+            JSON.parse(response["friends"]).forEach(friend => {
                 map.addMarker(friend, "#009900", createUserPopupContent(friend, false))
             });
         }

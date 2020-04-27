@@ -59,8 +59,8 @@ class LocateController extends AbstractController
 
         return $this->json([
             "currentUser" => $serializer->serialize($this->getUser(), 'json', ['groups' => ['user']]),
-            "friends" => $this->getUser()->getFriends(),
-            "otherUsers" => $users
+            "friends" => $serializer->serialize($this->getUser()->getFriends(), 'json', ['groups' => ['user']]),
+            "otherUsers" => $serializer->serialize($users, 'json', ['groups' => ['user']])
         ]);
     }
 }

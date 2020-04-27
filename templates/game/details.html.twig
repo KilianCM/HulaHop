@@ -13,7 +13,11 @@
                 <div class="details">
                     <p class="dispo"><span class="title">État : </span> {% if game.isBorrowed %} <span class="false">Non disponible</span> {% else %}
                             <span class="true">Disponible</span> {% endif %}</p>
+                    {% if game.category.parentCategory %}
                     <p class="cat"><span class="title">Categorie :</span> {{ game.category.parentCategory.name }} > {{ game.category.name }}</p>
+                    {% else %}
+                    <p class="cat"><span class="title">Categorie :</span> {{ game.category.name }}</p>
+                    {% endif %}
                     <p class="cat"><span class="title">Âge recommandé :</span> {{ game.recommendedAge }} ans ou +</p>
                     <p class="cat"><span class="title">Temps moyen de partie :</span> {{ game.partyTime }} minutes</p>
                     <h2 class="desc-title">Description</h2>

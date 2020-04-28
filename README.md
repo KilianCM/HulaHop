@@ -40,7 +40,8 @@ To launch the project for dev purpose, you have to launch these commands :
 #### With Docker
 
 ```
-docker-compose up
+docker-compose up -d
+docker-compose exec php bash -c "npm i && npm rebuild node-sass && npm run build"
 ```
 
 #### Without Docker

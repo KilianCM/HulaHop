@@ -32,9 +32,7 @@
         "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.0.*",
-        "ext-json": "*",
-        "fyneworks/star-rating": "4.11.0",
-        "nurikabe/star-rating-bundle": "~2.0.1"
+        "ext-json": "*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",

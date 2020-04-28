@@ -46,9 +46,9 @@ class GameController extends AbstractController
         $categoriesParam = $request->query->get("categories");
         if ($categoriesParam) {
             $categoriesParam = explode(",",$categoriesParam);
-            $games = $gameRepository->findAllCategories($categoriesParam);
+            $games = $gameRepository->findAllByCategories($categoriesParam);
         } else {
-            $games = $gameRepository->findBy(["isBorrowed" => false]);
+            $games = $gameRepository->findAll();
         }
 
         return $this->render('game/list.html.twig', [

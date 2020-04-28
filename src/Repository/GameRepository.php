@@ -20,7 +20,7 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
-    public function findAllCategories(array $categoriesId, $isBorrowed = false)
+    public function findAllByCategories(array $categoriesId, $isBorrowed = false)
     {
         $query = $this->createQueryBuilder('g')
             ->join('g.category', 'c')

@@ -1,0 +1,20 @@
+InsecureSkipVerify = true
+
+defaultEntryPoints = ["https", "http"]
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  compress = true
+    [entryPoints.https.tls]
+
+[acme]
+email = "hulahop.dim@gmail.com"
+storage = "/acme/acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"

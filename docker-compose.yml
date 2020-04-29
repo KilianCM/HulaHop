@@ -20,9 +20,26 @@ services:
     ports:
       - 13306:3306
   nginx:
-    image: nginx:1.17
-    ports:
-      - 80:80
+    image: nginx:alpine
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - 'traefik.frontend.rule=Host:hulahop.h91.co'
+      - "traefik.port=80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - public:/app/public
+  proxy:
+    image: traefik:1.7.21
+    command: --web -c /etc/traefik/traefik.toml --LOGLEVEL=debug
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - /acme
+
+
+
